@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: One posts
+  body: MyText 1
+  category: two
+  description: MyText 1
+  published: true
+  
+two:
+  title: Two posts
+  body: MyText 2
+  category: one
+  description: MyText 2
+  published: false

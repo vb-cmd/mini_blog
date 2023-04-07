@@ -1,0 +1,22 @@
+<% set_meta_tags(
+      title: @post.meta_title,
+      description: @post.meta_description,
+      keywords: @post.meta_keywords,
+      canonical: post_url(@post),
+) %>
+
+<p style="color: green"><%= notice %></p>
+
+<div class="card" style="margin-bottom: 10px">
+  <h1 class="card-header"><%= @post.title %></h1>
+
+  <div class="card-body">
+    <p class="card-text"><%= raw @post.body %></p>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= t('.category') %> <%= link_to @post.category.title, category_path(@post.category), class: "card-link" %></li>
+    <li class="list-group-item"><%= t('.added') %> <%= @post.date_created %></li>
+  </ul>
+  
+</div>

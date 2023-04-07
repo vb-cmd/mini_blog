@@ -1,0 +1,32 @@
+en:
+  site:
+    name: Mini Blog
+    navbar:
+      home: Home
+      search: Search
+
+  search:
+    index:
+      meta:
+        title: Search
+    search_form:
+      button: Search
+      find: 'Find something interesting...'
+    quantity: 'Quantity: '
+    no_found: 'No results found'
+  
+  posts:
+    show:
+      category: 'Category: '
+      added: 'Added: '
+    no_posts: There are no posts
+
+  admin:
+    dashboard:
+      last_posts: 
+        name: Last 10 posts
+      categories_statistics: 
+        name: Top 10 categories
+        columns:
+          name: Name
+          quantity: Quantity

@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Category one
+  description: Category one description
+
+two:
+  title: Category two
+  description: Category two description
