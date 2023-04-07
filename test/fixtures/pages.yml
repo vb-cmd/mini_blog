@@ -3,9 +3,14 @@
 one:
   title: MyString
   body: MyText
-  published: false
+  published: true
 
 two:
+  title: MyString
+  body: MyText
+  published: true
+  
+negative:
   title: MyString
   body: MyText
   published: false

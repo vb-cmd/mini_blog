@@ -13,3 +13,10 @@ two:
   category: one
   description: MyText 2
   published: false
+
+negative:
+  title: Two posts
+  body: MyText 2
+  category: one
+  description: MyText 2
+  published: false

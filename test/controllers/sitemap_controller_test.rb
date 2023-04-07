@@ -5,6 +5,12 @@ class SitemapControllerTest < ActionDispatch::IntegrationTest
     get sitemap_posts_url
     assert_response :success
   end
+
+  test 'should get pages' do
+    get sitemap_pages_url
+    assert_response :success
+  end
+
   test 'should get categories' do
     get sitemap_categories_url
     assert_response :success
