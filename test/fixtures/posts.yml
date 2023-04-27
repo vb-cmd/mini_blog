@@ -6,13 +6,15 @@ one:
   category: two
   description: MyText 1
   published: true
-  
+  view_comments: true
+
 two:
   title: Two posts
   body: MyText 2
   category: one
   description: MyText 2
-  published: false
+  published: true
+  view_comments: true
 
 negative:
   title: Two posts
@@ -20,3 +22,4 @@ negative:
   category: one
   description: MyText 2
   published: false
+  view_comments: true

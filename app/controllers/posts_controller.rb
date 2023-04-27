@@ -6,6 +6,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
-    @post = Post.take_post_by_id(params[:id])
+    @post = Post.find_post_by_id(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments.where(published: true)
   end
 end

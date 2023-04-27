@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <% @sitemaps.each do |url|%>
-      <sitemap>
-        <loc><%= url %></loc>
-      </sitemap>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <%= render partial: 'url', locals: { url:home_url, date_updated: DateTime.now.strftime('%d/%m/%Y')} %>
+    <% @pages.each do |page| %>
+      <%= render partial: 'url', locals: { url:page_url(page), date_updated:page.date_updated } %>
     <% end %>
-  </sitemapindex>
+    <% @categories.each do |category| %>
+      <%= render partial: 'url', locals: { url:category_url(category), date_updated:category.date_updated } %>
+    <% end %>
+    <% @posts.each do |post| %>
+      <%= render partial: 'url', locals: { url:post_url(post), date_updated:post.date_updated } %>
+    <% end %>
+  </urlset>

@@ -15,6 +15,11 @@ en:
     quantity: 'Quantity: '
     no_found: 'No results found'
   
+  comments:
+    new: 
+      created: 'Comment created!'
+      not_created: 'Comment not created!'
+
   posts:
     show:
       category: 'Category: '
