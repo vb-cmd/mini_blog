@@ -1,13 +1,15 @@
 class CommentsController < ApplicationController
   def new
     @comment = Comment.new(comment_params)
-    if can_create_comment? && @comment.save
-      flash[:notice] = t('.created')
+    if can_create_comment?
+      if @comment.save
+        render json: @comment.take_name_and_body, status: :created
+      else
+        render json: @comment.errors.full_messages, status: :unprocessable_entity
+      end
     else
-      flash[:alert] = t('.not_created')
+      head :forbidden
     end
-
-    redirect_to post_path(params[:post_id])
   end
 
   private

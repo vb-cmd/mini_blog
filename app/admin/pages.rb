@@ -20,14 +20,14 @@ ActiveAdmin.register Page do
 
   form do |f|
     f.inputs do
-      h2 'Content:'
+      h2 'Content: ', style: 'padding-left:10px;'
       f.input :title
       f.input :body
       f.input :published
       f.input :created_at
       f.input :updated_at
 
-      h2 'Meta:'
+      h2 'Meta: ', style: 'padding-left:10px;'
       f.input :meta_title
       f.input :meta_description
       f.input :meta_keywords

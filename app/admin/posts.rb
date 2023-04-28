@@ -24,6 +24,7 @@ ActiveAdmin.register Post do
 
   form do |f|
     f.inputs do
+      h2 'Content: ', style: 'padding-left:10px;'
       f.input :title
       f.input :body
       f.input :description
@@ -32,6 +33,8 @@ ActiveAdmin.register Post do
       f.input :view_comments
       f.input :created_at
       f.input :updated_at
+
+      h2 'Meta:', style: 'padding-left:10px;'
       f.input :meta_title
       f.input :meta_description
       f.input :meta_keywords
