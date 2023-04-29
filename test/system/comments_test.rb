@@ -18,7 +18,8 @@ class CommentsTest < ApplicationSystemTestCase
     fill_in 'comment[body]', with: @comment.body
     click_on 'Leave a comment'
 
-    assert_text 'Comment created!'
+    assert_text @comment.name
+    assert_text @comment.body
 
     equel_comments 1
   end
