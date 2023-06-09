@@ -303,8 +303,8 @@ DEPENDENCIES
   kaminari
   meta-tags
   pg
-  puma (~> 5.0)
-  rails (~> 7.0.4)
+  puma
+  rails (~> 7.0.5)
   ransack
   rubocop
   sass-rails
