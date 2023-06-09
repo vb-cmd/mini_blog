@@ -1,14 +1,15 @@
 class CommentsController < ApplicationController
+  before_action do
+    render_errors([t('.not_allowed')], :forbidden) unless can_create_comment?
+  end
+
   def new
     @comment = Comment.new(comment_params)
-    if can_create_comment?
-      if @comment.save
-        render json: @comment.take_name_and_body, status: :created
-      else
-        render json: @comment.errors.full_messages, status: :unprocessable_entity
-      end
+
+    if @comment.save
+      render_comment @comment
     else
-      head :forbidden
+      render_errors(@comment.errors.full_messages)
     end
   end
 
@@ -22,5 +23,19 @@ class CommentsController < ApplicationController
     params.require(:comment)
           .permit(:name, :email, :body)
           .merge(post_id: params[:post_id], published: true)
+  end
+
+  def render_comment(comment)
+    render partial: 'comment',
+           locals: { comment: },
+           layout: false,
+           status: :created
+  end
+
+  def render_errors(errors, status = :unprocessable_entity)
+    render partial: 'errors',
+           locals: { errors: },
+           layout: false,
+           status:
   end
 end

@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
   validates :body, presence: true, length: { maximum: 300 }
   validates :published, inclusion: { in: [true, false] }
 
-  def take_name_and_body
+  def take_name_and_body_hash
     {
       name:,
       body:

@@ -13,16 +13,18 @@ class Post < ApplicationRecord
   include FormatDate
   extend SelectData
 
-  def self.take_posts_by_page(page)
-    includes(:category)
-      .where(published: true)
-      .order(created_at: :desc)
-      .page(page)
-  end
+  class << self
+    def take_all_by_page(page)
+      includes(:category)
+        .where(published: true)
+        .order(created_at: :desc)
+        .page(page)
+    end
 
-  def self.find_post_by_id(id)
-    includes(:category)
-      .where(published: true)
-      .find(id)
+    def find_published_by_id(id)
+      includes(:category)
+        .where(published: true)
+        .find(id)
+    end
   end
 end

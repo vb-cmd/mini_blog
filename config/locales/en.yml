@@ -16,9 +16,7 @@ en:
     no_found: 'No results found'
   
   comments:
-    new: 
-      created: 'Comment created!'
-      not_created: 'Comment not created!'
+    not_allowed: 'You cannot comment on this post'
 
   posts:
     show:

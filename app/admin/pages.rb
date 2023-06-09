@@ -5,7 +5,6 @@ ActiveAdmin.register Page do
     selectable_column
     id_column
     column :title
-    column :body
     column :published
     column :created_at
     column :updated_at
@@ -20,14 +19,13 @@ ActiveAdmin.register Page do
 
   form do |f|
     f.inputs do
-      h2 'Content: ', style: 'padding-left:10px;'
       f.input :title
       f.input :body
       f.input :published
       f.input :created_at
       f.input :updated_at
 
-      h2 'Meta: ', style: 'padding-left:10px;'
+      h2 'Meta Tags Data: ', style: 'padding-left:10px;'
       f.input :meta_title
       f.input :meta_description
       f.input :meta_keywords

@@ -7,52 +7,33 @@ function addComment() {
         method: 'POST',
         body: new FormData(comment_form),
     }).then(response => {
-        let json = response.json()
-        if (response.status === 201) {
-            json.then(data => {
-                console.info(data);
-                createTemplateComment(data);
+        response.text().then(text => {
 
-            });
-        } else {
-            json.then(data => {
-                console.info(data);
-                createError(data);
-            });
-        }
+            switch (response.status) {
+                case 201:
+                    createTemplateComment(text);;
+                    break;
+
+                case 403, 422:
+                    createError(text);
+                    break;
+            }
+        });
     });
 }
 
 
-function createError(data) {
-    let errorMessage = document.createElement('ul');
-    errorMessage.classList.add('list-group');
-    data.forEach(element => {
-        let li = document.createElement('li');
-        li.classList.add('list-group-item');
-        li.innerText = element;
-        errorMessage.appendChild(li);
-    });
-    
+function createError(errors_body) {
     comment_message.classList.add('alert-danger');
-    comment_message.classList.remove('alert-success');
-    comment_message.innerHTML = errorMessage.innerHTML;
+    comment_message.innerHTML = errors_body;
 }
 
-function createTemplateComment(comment) {
+function createTemplateComment(comment_body) {
     let div = document.createElement('div');
-    div.classList.add('card');
-    div.style.marginBottom = '10px';
-    div.innerHTML = `<ul class="list-group list-group-flush">
-    <li class="list-group-item">Name: ${comment.name}</li>
-    </ul>
-    <div class="card-body">
-    <p class="card-text">${comment.body}</p>
-    </div>`
+    div.innerHTML = comment_body
 
     comment_message.classList.remove('alert-danger');
-    comment_message.classList.add('alert-success');
-    comment_message.innerText = 'Comment added successfully.';
-    
+    comment_message.innerHTML = '';
+
     comments.appendChild(div);
 }
