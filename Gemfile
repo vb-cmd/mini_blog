@@ -57,20 +57,18 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'devise', '~> 4.8'
+gem 'devise'
 
-gem 'activeadmin', '~> 2.13'
+gem 'activeadmin'
 
-gem 'kaminari', '~> 1.2'
+gem 'kaminari'
 
-gem 'sass-rails', '~> 6.0'
+gem 'sass-rails'
 
-gem 'ransack', '~> 3.2'
+gem 'ransack'
 
 gem 'json'
 
 gem 'pg'
 
 gem 'meta-tags'
-
-gem 'geocoder'
