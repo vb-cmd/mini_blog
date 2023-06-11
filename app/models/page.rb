@@ -5,4 +5,8 @@ class Page < ApplicationRecord
   
   include FormatDate
   extend SelectData
+
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
 end

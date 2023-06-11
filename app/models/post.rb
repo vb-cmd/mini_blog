@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :category
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true
@@ -26,5 +26,9 @@ class Post < ApplicationRecord
         .where(published: true)
         .find(id)
     end
+  end
+
+  def to_param
+    "#{id}-#{title.parameterize}"
   end
 end

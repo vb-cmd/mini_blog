@@ -3,7 +3,6 @@ ActiveAdmin.register Category do
 
   index do
     selectable_column
-    id_column
     column :title
     column :description
     column 'Quantity', ->(category) { category.posts.count }

@@ -17,6 +17,13 @@ Post.create(category: Category.all.first,
             meta_description: 'Description Hello world!',
             meta_keywords: 'hello, world, description')
 
+# create a comment
+Comment.create(name: 'Hello World',
+               email: '4p5Q6@example.com',
+               body: 'Here your content for comment',
+               published: true,
+               post: Post.all.first)
+
 # create a page
 Page.create(title: 'About',
             body: 'Here your content',

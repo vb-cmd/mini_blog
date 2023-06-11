@@ -3,7 +3,6 @@ ActiveAdmin.register Page do
 
   index do
     selectable_column
-    id_column
     column :title
     column :published
     column :created_at
