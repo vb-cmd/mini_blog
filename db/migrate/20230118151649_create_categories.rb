@@ -8,7 +8,6 @@ class CreateCategories < ActiveRecord::Migration[7.0]
       
       # category info
       t.string :title
-      t.string :description
 
       t.timestamps
     end

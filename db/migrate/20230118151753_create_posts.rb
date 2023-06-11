@@ -8,8 +8,6 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       
       # post info
       t.string :title
-      t.text :body
-      t.text :description
       t.boolean :published, default: true
       t.boolean :comments_enabled, default: false
       t.references :category, foreign_key: true
