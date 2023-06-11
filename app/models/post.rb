@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   paginates_per 10
 
   include FormatDate
+  include Parameter
   extend SelectData
 
   class << self
@@ -26,9 +27,5 @@ class Post < ApplicationRecord
         .where(published: true)
         .find(id)
     end
-  end
-
-  def to_param
-    "#{id}-#{title.parameterize}"
   end
 end

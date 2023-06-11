@@ -1,0 +1,26 @@
+<%= form_with model: @category, url: url do |f| %>
+  <div class="mb-3">
+    <%= f.label "Title: " %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label "Description: " %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+  <h2>Meta data: </h2>
+  <div class="mb-3">
+    <%= f.label "Title: " %>
+    <%= f.text_field :meta_title, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label "Description: " %>
+    <%= f.text_field :meta_description, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label "Keywords: " %>
+    <%= f.text_field :meta_keywords, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 module SelectData
-  def select_only_updated_and_id
-    self.select(:updated_at, :id)
+  def select_title_and_ids
+    self.select(:id, :title).map { |post| [post.title, post.id] }
   end
 end

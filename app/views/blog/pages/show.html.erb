@@ -1,0 +1,14 @@
+<% set_meta_tags(
+  title: @page.meta_title,
+  description: @page.meta_description,
+  keywords: @page.meta_keywords,
+  canonical: page_url(@page),
+) %>
+<%= render 'admin/pages/panel' %>
+<div class="card" style="margin-bottom: 10px">
+  <h1 class="card-header"><%= @page.title %></h1>
+  <div class="card-body">
+    <%= raw @page.body %>
+  </div>
+</div>
+<%= render 'admin/pages/panel' %>

@@ -4,9 +4,6 @@ class Page < ApplicationRecord
   validates :published, inclusion: { in: [true, false] }
   
   include FormatDate
+  include Parameter
   extend SelectData
-
-  def to_param
-    "#{id}-#{title.parameterize}"
-  end
 end

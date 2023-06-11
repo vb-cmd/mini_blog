@@ -1,0 +1,30 @@
+<%= form_with model: @page, url: url do |f| %>
+  <div class="mb-3">
+    <%= f.label "Title: " %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label "Body: " %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+    <div class="mb-3">
+    <%= f.label "Published: ", class: "form-check-label" %>
+    <%= f.check_box :published, class: "form-check-input" %>
+  </div>
+  <h2>Meta data: </h2>
+  <div class="mb-3">
+    <%= f.label "Title: " %>
+    <%= f.text_field :meta_title, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label "Description: " %>
+    <%= f.text_field :meta_description, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label "Keywords: " %>
+    <%= f.text_field :meta_keywords, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -21,6 +21,14 @@
             </li>
           <% end %>
         </ul>
+        <span class="navbar-text">
+          <% if admin_user_signed_in? %>
+            Hello, <%= current_admin_user.email %>!
+            <%= button_to 'Log out', destroy_admin_user_session_path, class: "btn btn-outline-success", method: :delete %>
+          <% else %>
+            <%= link_to 'Log in', new_admin_user_session_path, class: "btn btn-outline-success" %>
+          <% end %>
+        </span>
       </div>
     </div>
   </nav>

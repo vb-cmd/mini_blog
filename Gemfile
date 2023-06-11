@@ -59,8 +59,6 @@ end
 
 gem 'devise'
 
-gem 'activeadmin'
-
 gem 'kaminari'
 
 gem 'sass-rails'

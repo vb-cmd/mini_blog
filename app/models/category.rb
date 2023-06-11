@@ -4,9 +4,6 @@ class Category < ApplicationRecord
   validates :description, presence: true, length: { maximum: 300 }
 
   include FormatDate
+  include Parameter
   extend SelectData
-
-  def to_param
-    "#{id}-#{title.parameterize}"
-  end
 end

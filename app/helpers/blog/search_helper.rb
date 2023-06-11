@@ -1,0 +1,2 @@
+module Blog::SearchHelper
+end

@@ -4,25 +4,28 @@ en:
     navbar:
       home: Home
       search: Search
-
-  search:
-    index:
-      meta:
-        title: Search
-    search_form:
-      button: Search
-      find: 'Find something interesting...'
-    quantity: 'Quantity: '
-    no_found: 'No results found'
+  blog:
+    search:
+      index:
+        quantity: 'Quantity: '
+        no_found: 'No results found'
+        meta:
+          title: Search
+      search_form:
+        button: Search
+        find: 'Find something interesting...'
   
-  comments:
-    not_allowed: 'You cannot comment on this post'
+    comments:
+      not_allowed: 'You cannot comment on this post'
 
-  posts:
-    show:
-      category: 'Category: '
-      added: 'Added: '
-    no_posts: There are no posts
+    posts:
+      index:
+        meta:
+          title: Posts
+      show:
+        category: 'Category: '
+        added: 'Added: '
+      no_posts: There are no posts
 
   admin:
     dashboard:
