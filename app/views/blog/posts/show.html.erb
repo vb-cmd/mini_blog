@@ -17,7 +17,7 @@
 </div>
 <%= render 'admin/posts/panel' %>
 <!-- send comment -->
-<% if @post.view_comments? %>
+<% if @post.comments_enabled? %>
   <%= render partial: "blog/comments/form", locals: { comment: @new_comment, id: @post.id } %>
 <% else %>
   <p>Commenting is disabled.</p>

@@ -17,7 +17,7 @@ module Blog
     private
 
     def can_create_comment?
-      Post.find(params[:post_id]).view_comments?
+      Post.find(params[:post_id]).comments_enabled?
     end
 
     def comment_params

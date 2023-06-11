@@ -43,7 +43,7 @@ module Admin
 
     def post_params
       params[:post].permit(:title, :body, :published,
-                           :description, :category_id, :view_comments,
+                           :description, :category_id, :comments_enabled,
                            :meta_title, :meta_description, :meta_keywords)
     end
   end

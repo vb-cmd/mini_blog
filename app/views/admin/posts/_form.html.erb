@@ -1,3 +1,5 @@
+<%= javascript_include_tag "application", type: "module" %>
+
 <%= form_with model: @post, url: url do |f| %>
   <div class="mb-3">
     <%= f.label "Title: " %>
@@ -5,19 +7,19 @@
   </div>
     <div class="mb-3">
     <%= f.label "Description: " %>
-    <%= f.text_area :description, class: "form-control" %>
+    <%= f.rich_text_area :description, class: "form-control" %>
   </div>
   <div class="mb-3">
     <%= f.label "Body: " %>
-    <%= f.text_area :body, class: "form-control" %>
+    <%= f.rich_text_area :body, class: "form-control" %>
   </div>
     <div class="mb-3">
     <%= f.label "Published: ", class: "form-check-label" %>
     <%= f.check_box :published, class: "form-check-input" %>
   </div>
       <div class="mb-3">
-    <%= f.label "Permission to comment: ", class: "form-check-label" %>
-    <%= f.check_box :view_commenteds, class: "form-check-input" %>
+    <%= f.label "Comments enabled: ", class: "form-check-label" %>
+    <%= f.check_box :comments_enabled, class: "form-check-input" %>
   </div>
   <div class="mb-3">
     <%= f.label "Category: " %>

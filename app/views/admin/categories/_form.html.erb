@@ -1,3 +1,5 @@
+<%= javascript_include_tag "application", type: "module" %>
+
 <%= form_with model: @category, url: url do |f| %>
   <div class="mb-3">
     <%= f.label "Title: " %>
@@ -5,7 +7,7 @@
   </div>
   <div class="mb-3">
     <%= f.label "Description: " %>
-    <%= f.text_area :description, class: "form-control" %>
+    <%= f.rich_text_area :description, class: "form-control" %>
   </div>
   <h2>Meta data: </h2>
   <div class="mb-3">

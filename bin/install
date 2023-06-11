@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+puts "Install image processing library (libvips)"
+system "sudo apt-get install libvips"

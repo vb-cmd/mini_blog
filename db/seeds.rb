@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-# create a category
+puts 'create a category'
 Category.create(title: 'Default',
                 description: 'Here your description',
                 meta_title: 'Default',
                 meta_description: 'Description category',
                 meta_keywords: 'category, meta, keywords')
 
-# create a post
+puts 'create a post'
 Post.create(category: Category.all.first,
             title: 'Hello world!',
             body: 'Here your content',
@@ -17,14 +17,14 @@ Post.create(category: Category.all.first,
             meta_description: 'Description Hello world!',
             meta_keywords: 'hello, world, description')
 
-# create a comment
+puts 'create a comment'
 Comment.create(name: 'Hello World',
                email: '4p5Q6@example.com',
                body: 'Here your content for comment',
                published: true,
                post: Post.all.first)
 
-# create a page
+puts 'create a page'
 Page.create(title: 'About',
             body: 'Here your content',
             published: true,
@@ -32,7 +32,7 @@ Page.create(title: 'About',
             meta_description: 'Description page about',
             meta_keywords: 'abaout, meta, description')
 
-# create an admin account
+puts 'create an admin account'
 AdminUser.create!(email: 'admin@admin.com',
                   password: 'password',
                   password_confirmation: 'password')

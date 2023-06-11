@@ -4,10 +4,13 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
-  validates :description, presence: true, length: { maximum: 300 }
+  validates :description, presence: true
   validates :published, inclusion: { in: [true, false] }
-  validates :view_comments, inclusion: { in: [true, false] }
+  validates :comments_enabled, inclusion: { in: [true, false] }
 
+  has_rich_text :body
+  has_rich_text :description
+  
   paginates_per 10
 
   include FormatDate
