@@ -7,8 +7,16 @@
   <% if admin_user_signed_in? %>
     <div class="row">
       <div class="col">
-        <%= link_to admin_admin_users_show_path do %>
-          <%= image_tag current_admin_user.avatar, size: "170x170" %>
+        <% if current_admin_user.avatar.attached? %>
+          <%= link_to admin_admin_users_show_path do %>
+            <%= image_tag current_admin_user.avatar, size: "170x170" %>
+          <% end %>
+        <% else %>
+          <svg class="bd-placeholder-img" height="170" width="170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#868e96"></rect>
+            <text x="30%" y="50%" fill="#dee2e6" dy=".3em">No Image</text>
+          </svg>
         <% end %>
       </div>
       <div class="col">
