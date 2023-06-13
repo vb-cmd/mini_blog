@@ -3,3 +3,21 @@
     <%= link_to category.title, category_path(category), class: "list-group-item list-group-item-action" %>
   <% end %>
 </div>
+<div class="container text-center" style="margin: 10px;">
+  <% if admin_user_signed_in? %>
+    <div class="row">
+      <div class="col">
+        <%= link_to admin_admin_users_show_path do %>
+          <%= image_tag current_admin_user.avatar, size: "170x170" %>
+        <% end %>
+      </div>
+      <div class="col">
+        <p>Hello, <%= link_to current_admin_user.name, admin_admin_users_show_path, class: "link-primary" %>!</p>
+        <p><%= link_to 'Edit', admin_admin_users_edit_path, class: "btn btn-success", role: "button" %></p>
+        <p> <%= button_to 'Log out', destroy_admin_user_session_path, class: "btn btn-danger", method: :delete %></p>
+      </div>
+    </div>
+  <% else %>
+    <%= link_to 'Log in', new_admin_user_session_path, class: "btn btn-outline-success" %>
+  <% end %>
+</div>

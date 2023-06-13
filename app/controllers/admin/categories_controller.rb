@@ -2,6 +2,10 @@ module Admin
   class CategoriesController < Base
     before_action :set_category, only: %i[edit update destroy]
 
+    def index
+      @categories = Category.all
+    end
+
     def edit; end
 
     def update
@@ -28,6 +32,7 @@ module Admin
 
     def destroy
       @category.destroy
+      redirect_to admin_categories_path
     end
 
     private

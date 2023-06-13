@@ -1,6 +1,10 @@
 module Admin
   class PagesController < Base
     before_action :set_page, only: %i[edit update destroy]
+    
+    def index
+      @pages = Page.all
+    end
 
     def edit; end
 
@@ -28,6 +32,7 @@ module Admin
 
     def destroy
       @page.destroy
+      redirect_to admin_pages_path
     end
 
     private

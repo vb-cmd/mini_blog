@@ -1,0 +1,12 @@
+<% set_meta_tags(
+  title: @profile.meta_title,
+  description: @profile.meta_description,
+  keywords: @profile.meta_keywords,
+  canonical: profile_url(@profile),
+) %>
+<div class="card" style="margin-bottom: 10px">
+  <h1 class="card-header"><%= @profile.name %></h1>
+  <div class="card-body">
+    <%= @profile.body %>
+  </div>
+</div>

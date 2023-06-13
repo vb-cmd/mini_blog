@@ -8,7 +8,7 @@ class CreatePages < ActiveRecord::Migration[7.0]
       
       # page info
       t.string :title
-      t.boolean :published
+      t.boolean :published, default: true
 
       t.timestamps
     end

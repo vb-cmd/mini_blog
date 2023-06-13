@@ -1,0 +1,16 @@
+<div class="card" style="margin-bottom: 10px">
+  <div class="card-header">
+    <%= render partial: 'admin/layouts/panel', locals: { url_edit: admin_admin_users_edit_path, url_destroy:admin_admin_users_destroy_path } %>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= current_admin_user.email %></li>
+    <li class="list-group-item"><%= current_admin_user.name %></li>
+    <li class="list-group-item"><%= image_tag current_admin_user.avatar, size: "300x300" %></li>
+  </ul>
+  <div class="card-body">
+    <p class="card-text"><%= current_admin_user.body %></p>
+  </div>
+  <div class="card-footer">
+    <%= render partial: 'admin/layouts/panel', locals: { url_edit: admin_admin_users_edit_path, url_destroy:admin_admin_users_destroy_path } %>
+  </div>
+</div>

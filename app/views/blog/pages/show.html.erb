@@ -4,11 +4,11 @@
   keywords: @page.meta_keywords,
   canonical: page_url(@page),
 ) %>
-<%= render 'admin/pages/panel' %>
+<%= render partial: 'admin/layouts/panel', locals: { url_edit: edit_admin_page_path(@page), url_destroy: admin_page_path(@page) } %>
 <div class="card" style="margin-bottom: 10px">
   <h1 class="card-header"><%= @page.title %></h1>
   <div class="card-body">
     <%= raw @page.body %>
   </div>
 </div>
-<%= render 'admin/pages/panel' %>
+<%= render partial: 'admin/layouts/panel', locals: { url_edit: edit_admin_page_path(@page), url_destroy: admin_page_path(@page) } %>

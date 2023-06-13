@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :category
   has_many :comments, dependent: :destroy
+  belongs_to :admin_user
 
   validates :title, presence: true
   validates :body, presence: true

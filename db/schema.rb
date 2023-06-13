@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_11_202057) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_122207) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,20 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_11_202057) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
-  end
-
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string "namespace"
-    t.text "body"
-    t.string "resource_type"
-    t.bigint "resource_id"
-    t.string "author_type"
-    t.bigint "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -74,7 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_11_202057) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "meta_title"
+    t.string "meta_description"
+    t.string "meta_keywords"
+    t.string "name", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["name"], name: "index_admin_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
@@ -83,7 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_11_202057) do
     t.string "meta_description"
     t.string "meta_keywords"
     t.string "title"
-    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,7 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_11_202057) do
     t.string "name", null: false
     t.string "email", null: false
     t.text "body", null: false
-    t.boolean "published"
+    t.boolean "published", default: true
     t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -104,8 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_11_202057) do
     t.string "meta_description"
     t.string "meta_keywords"
     t.string "title"
-    t.text "body"
-    t.boolean "published"
+    t.boolean "published", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -115,18 +104,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_11_202057) do
     t.string "meta_description"
     t.string "meta_keywords"
     t.string "title"
-    t.text "body"
-    t.string "description"
-    t.boolean "published"
+    t.boolean "published", default: true
+    t.boolean "comments_enabled", default: true
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.boolean "comments_enabled", default: true
+    t.bigint "admin_user_id"
+    t.index ["admin_user_id"], name: "index_posts_on_admin_user_id"
     t.index ["category_id"], name: "index_posts_on_category_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
+  add_foreign_key "posts", "admin_users"
   add_foreign_key "posts", "categories"
 end

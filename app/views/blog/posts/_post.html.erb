@@ -1,22 +1,12 @@
 <div class="card" style="margin-bottom: 10px">
   <h2 class="card-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-10">
-          <%= link_to post do %>
-            <%= post.title %>
-          <% end %>
-        </div>
-        <div class="col-sm-1">
-          <%= render partial: 'admin/posts/short_panel', locals: { post: post } %>
-        </div>
-      </div>
-    </div>
+    <%= link_to post.title, post_path(post) %>
   </h2>
   <div class="card-body">
     <p class="card-text"><%= post.description %></p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><%= t('posts.show.category') %> <%= link_to post.category.title, category_path(post.category), class: 'card-link' %></li>
+    <li class="list-group-item"><%= 'Profile: ' %> <%= link_to post.admin_user.name, profile_path(post.admin_user.name), class: 'card-link' %></li>
   </ul>
 </div>

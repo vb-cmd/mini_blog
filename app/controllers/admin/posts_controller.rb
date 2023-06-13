@@ -3,6 +3,15 @@ module Admin
     before_action :set_post, only: %i[edit update destroy]
     before_action :set_categories, only: %i[new edit]
 
+    def index
+      @posts = Post.all
+    end
+
+    def category_posts
+      @posts = Post.where(category_id: params[:category_id])
+      render 'index'
+    end
+
     def edit; end
 
     def update
@@ -18,7 +27,7 @@ module Admin
     end
 
     def create
-      @post = Post.new(post_params)
+      @post = Post.new(post_params.merge(admin_user: current_admin_user))
 
       if @post.save
         redirect_to post_path(@post)
@@ -29,6 +38,7 @@ module Admin
 
     def destroy
       @post.destroy
+      redirect_to admin_posts_path
     end
 
     private

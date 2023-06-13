@@ -1,0 +1,31 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Posts count</th>
+      <th scope="col">Meta data</th>
+      <th scope="col">Management</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+    <tr>
+      <th scope="row"><%= category.id %></th>
+      <td><%= category.title %></td>
+      <td><%= link_to category.posts.count, admin_category_posts_path(category) %></td>
+      <td>
+        <%= category.meta_title %> <br>
+        <%= category.meta_description %> <br>
+        <%= category.meta_keywords %>
+      </td>
+      <td><%= render partial: "admin/layouts/management_links", 
+              locals: { 
+                      url_destroy: admin_category_path(category), 
+                      url_show: category_path(category), 
+                      url_edit: edit_admin_category_path(category) 
+                      } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

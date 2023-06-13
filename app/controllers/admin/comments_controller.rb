@@ -3,6 +3,15 @@ module Admin
     before_action :set_comment, only: %i[edit update destroy show]
     before_action :set_posts, only: %i[new edit]
 
+    def index
+      @comments = Comment.all
+    end
+
+    def post_comments
+      @comments = Comment.where(post_id: params[:post_id])
+      render 'index'
+    end
+
     def show; end
 
     def edit; end
@@ -31,6 +40,7 @@ module Admin
 
     def destroy
       @comment.destroy
+      redirect_to admin_comments_path
     end
 
     private

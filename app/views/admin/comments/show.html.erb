@@ -1,4 +1,7 @@
 <div class="card" style="margin-bottom: 10px">
+  <div class="card-header">
+    <%= render partial: 'admin/layouts/panel', locals: { url_edit: edit_admin_comment_path(@comment), url_destroy:admin_comment_path(@comment) } %>
+  </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><%= @comment.name %></li>
     <li class="list-group-item"><%= @comment.email %></li>
@@ -8,6 +11,6 @@
     <p class="card-text"><%= @comment.body %></p>
   </div>
   <div class="card-footer">
-    <%= render partial: 'panel' %>
+    <%= render partial: 'admin/layouts/panel', locals: { url_edit: edit_admin_comment_path(@comment), url_destroy:admin_comment_path(@comment) } %>
   </div>
 </div>

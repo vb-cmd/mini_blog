@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   scope module: :blog do
     root 'posts#index', as: 'home'
 
+    get 'profile/:name', to: 'admin_user_profiles#show', as: 'profile'
+
     get 'sitemap', to: 'sitemap#index', as: 'sitemap', format: :xml
 
     get 'search', to: 'search#index', as: 'search'
@@ -17,10 +19,21 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :comments, only: %i[edit update new create destroy show]
-    resources :categories, only: %i[edit update new create destroy]
-    resources :posts, only: %i[edit update new create destroy]
-    resources :pages, only: %i[edit update new create destroy]
+    resources :comments
+    namespace :admin_users do
+      get '/edit', action: 'edit'
+      delete '/destroy', action: 'destroy'
+      get '/show', action: 'show'
+      match '/update', action: 'update', via: %i[put patch]
+    end
+    resources :admin_users, only: %i[index new create]
+    resources :categories, except: %i[show] do
+      get 'posts', to: 'posts#category_posts'
+    end
+    resources :posts, except: %i[show] do
+      get 'comments', to: 'comments#post_comments'
+    end
+    resources :pages, except: %i[show]
   end
 
   devise_for :admin_users

@@ -13,16 +13,10 @@
     <div class="container">
       <p style="color: green"><%= notice %></p>
       <p style="color: red"><%= alert %></p>
-      <div class="row">
-        <div class="col-sm-8">
-          <!--cards-->
-          <%= yield %>
-        </div>
-        <div class="col-sm-4">
-          <!-- menu -->
-          <%= render 'layouts/menu' %>
-        </div>
-      </div>
+      <%= render 'admin/layouts/new_links' %>
+       <%= render 'admin/layouts/menu_admin' %>
+      <!--admin panel-->
+      <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
     <%= javascript_include_tag 'bootstrap' %>
