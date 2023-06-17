@@ -5,6 +5,7 @@
       <th scope="col">Email</th>
       <th scope="col">Name</th>
       <th scope="col">Posts count</th>
+      <th scope="col">Management</th>
     </tr>
   </thead>
   <tbody>
@@ -12,8 +13,14 @@
       <tr>
         <th scope="row"><%= admin_user.id %></th>
         <td><%= admin_user.email %></td>
-        <td><%= link_to admin_user.name, profile_path(admin_user.name) %></td>
-        <td><%= admin_user.posts.count %></td>
+        <td><%= admin_user.name %></td>
+        <td><%= link_to admin_user.posts.count, admin_admin_user_posts_path(admin_user) %></td>
+        <td>       <%= render partial: "admin/panel/management_links", 
+              locals: {
+                destroy: { name: AdminUser, url: admin_admin_user_path(admin_user) }, 
+                show: { name: AdminUser, url: admin_admin_user_path(admin_user) },
+                edit: { name: AdminUser, url: edit_admin_admin_user_path(admin_user) } 
+                      } %></td>
       </tr>
     <% end %>
   </tbody>

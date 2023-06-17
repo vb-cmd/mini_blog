@@ -1,0 +1,16 @@
+
+  <div class="container text-center" style="margin: 10px">
+    <% model_names_and_paths_for_read.each do |hash| %>
+      <% if can? :read, hash[:name] %>
+        <%= link_to hash[:title], hash[:path], class: "btn btn-primary", role: "button" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="container text-center" style="margin: 10px">
+    <% model_names_and_paths_for_create.each do |hash|%>
+      <% if can? :create, hash[:name] %>
+        <%= link_to hash[:title], hash[:path], class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+  </div>
+

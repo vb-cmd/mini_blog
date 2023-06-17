@@ -1,15 +1,10 @@
 module Admin
-  class CommentsController < Base
+  class CommentsController < BaseResource
     before_action :set_comment, only: %i[edit update destroy show]
     before_action :set_posts, only: %i[new edit]
 
     def index
       @comments = Comment.all
-    end
-
-    def post_comments
-      @comments = Comment.where(post_id: params[:post_id])
-      render 'index'
     end
 
     def show; end

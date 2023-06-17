@@ -1,2 +1,2 @@
 <h1>Edit a admin user</h1>
-<%= render partial: 'form', locals: { url: admin_admin_users_update_path, model: current_admin_user } %>
+<%= render 'form', url: admin_admin_user_path(@admin_user) %>

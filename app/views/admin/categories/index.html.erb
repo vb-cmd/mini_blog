@@ -19,11 +19,11 @@
         <%= category.meta_description %> <br>
         <%= category.meta_keywords %>
       </td>
-      <td><%= render partial: "admin/layouts/management_links", 
-              locals: { 
-                      url_destroy: admin_category_path(category), 
-                      url_show: category_path(category), 
-                      url_edit: edit_admin_category_path(category) 
+      <td>          <%= render partial: "admin/panel/management_links", 
+              locals: {
+                destroy: { name: Category, url: admin_category_path(category) }, 
+                show: { name: Category, url: admin_category_path(category) },
+                edit: { name: Category, url: edit_admin_category_path(category) } 
                       } %></td>
     </tr>
     <% end %>

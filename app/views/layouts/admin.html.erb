@@ -6,19 +6,18 @@
     <%= display_meta_tags(site: t('site.name'), reverse: true) %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'admin' %>
+    <%= javascript_include_tag 'admin' %>
   </head>
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
       <p style="color: green"><%= notice %></p>
       <p style="color: red"><%= alert %></p>
-      <%= render 'admin/layouts/new_links' %>
-       <%= render 'admin/layouts/menu_admin' %>
       <!--admin panel-->
+      <%= render 'admin/panel/admin_menu' %>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
-    <%= javascript_include_tag 'bootstrap' %>
   </body>
 </html>

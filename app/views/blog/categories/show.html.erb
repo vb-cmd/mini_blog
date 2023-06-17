@@ -5,7 +5,6 @@
   canonical: category_url(@category),
 ) %>
 <div id="<%= dom_id @category %>">
-  <%= render partial: 'admin/layouts/panel', locals: { url_edit: edit_admin_category_path(@category), url_destroy: admin_category_path(@category) } %>
   <h1><%= @category.title %></h1>
   <p><%= @category.description %></p>
   <% unless @posts.empty? %>
@@ -16,5 +15,4 @@
   <% else %>
     <p><%= t('posts.no_posts')%></p>
   <% end %>
-  <%= render partial: 'admin/layouts/panel', locals: { url_edit: edit_admin_category_path(@category), url_destroy: admin_category_path(@category) } %>
 </div>

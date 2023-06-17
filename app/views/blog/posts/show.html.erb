@@ -4,7 +4,6 @@
   keywords: @post.meta_keywords,
   canonical: post_url(@post)
 ) %>
-<%= render partial: 'admin/layouts/panel', locals:{ url_edit: edit_admin_post_path(@post), url_destroy:admin_post_path(@post) } %>
 <div class="card" style="margin-bottom: 10px">
   <h1 class="card-header"><%= @post.title %></h1>
   <div class="card-body">
@@ -15,7 +14,6 @@
     <li class="list-group-item"><%= t('.added') %> <%= @post.date_created %></li>
   </ul>
 </div>
-<%= render partial: 'admin/layouts/panel', locals:{ url_edit: edit_admin_post_path(@post), url_destroy:admin_post_path(@post) } %>
 <!-- send comment -->
 <% if @post.comments_enabled? %>
   <%= render partial: "blog/comments/form", locals: { comment: @new_comment, id: @post.id } %>
@@ -32,4 +30,3 @@
     <p>There are no comments. Leave a comment and be the first.</p>
   <% end %>
 </div>
-<%= javascript_include_tag 'comment' %>

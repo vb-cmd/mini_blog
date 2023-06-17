@@ -1,15 +1,18 @@
 <div class="card" style="margin-bottom: 10px">
   <div class="card-header">
-    <%= render partial: 'admin/layouts/panel', locals: { url_edit: admin_admin_users_edit_path, url_destroy:admin_admin_users_destroy_path } %>
+    <%= render partial: "admin/panel/management_links", 
+              locals: {
+                destroy: { name: AdminUser, url: admin_admin_user_path(@admin_user) }, 
+                show: { name: AdminUser, url: admin_admin_user_path(@admin_user) },
+                edit: { name: AdminUser, url: edit_admin_admin_user_path(@admin_user) } 
+                      } %>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= current_admin_user.email %></li>
-    <li class="list-group-item"><%= current_admin_user.name %></li>
+    <li class="list-group-item"><%= @admin_user.email %></li>
+    <li class="list-group-item"><%= @admin_user.name %></li>
     <li class="list-group-item">
-      <% if current_admin_user.avatar.attached? %>
-        <%= link_to admin_admin_users_show_path do %>
-          <%= image_tag current_admin_user.avatar, size: "300x300" %>
-        <% end %>
+      <% if @admin_user.avatar.attached? %>
+        <%= image_tag @admin_user.avatar, size: "300x300" %>
       <% else %>
         <svg class="bd-placeholder-img" height="300" width="300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
           <title>Placeholder</title>
@@ -20,9 +23,14 @@
     </li>
   </ul>
   <div class="card-body">
-    <p class="card-text"><%= current_admin_user.body %></p>
+    <p class="card-text"><%= @admin_user.body %></p>
   </div>
   <div class="card-footer">
-    <%= render partial: 'admin/layouts/panel', locals: { url_edit: admin_admin_users_edit_path, url_destroy:admin_admin_users_destroy_path } %>
+    <%= render partial: "admin/panel/management_links", 
+              locals: {
+                destroy: { name: AdminUser, url: admin_admin_user_path(@admin_user) }, 
+                show: { name: AdminUser, url: admin_admin_user_path(@admin_user) },
+                edit: { name: AdminUser, url: edit_admin_admin_user_path(@admin_user) } 
+                      } %>
   </div>
 </div>

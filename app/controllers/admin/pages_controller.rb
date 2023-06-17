@@ -1,10 +1,12 @@
 module Admin
-  class PagesController < Base
-    before_action :set_page, only: %i[edit update destroy]
-    
+  class PagesController < BaseResource
+    before_action :set_page, only: %i[show edit update destroy]
+
     def index
       @pages = Page.all
     end
+
+    def show; end
 
     def edit; end
 

@@ -1,10 +1,17 @@
 module Admin
-  class CategoriesController < Base
-    before_action :set_category, only: %i[edit update destroy]
+  class CategoriesController < BaseResource
+    before_action :set_category, only: %i[show edit update destroy]
 
     def index
       @categories = Category.all
     end
+
+    def posts
+      @category = Category.find(params[:category_id])
+      @posts = @category.posts
+    end
+
+    def show; end
 
     def edit; end
 

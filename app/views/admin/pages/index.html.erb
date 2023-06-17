@@ -13,17 +13,17 @@
       <tr>
         <th scope="row"><%= page.id %></th>
         <td><%= page.title %></td>
-        <td><%= page.published %></td>
+        <td><%= humanize_boolean page.published %></td>
         <td>
           <%=page.meta_title %> <br>
           <%=page.meta_description %> <br>
           <%=page.meta_keywords %>
         </td>
-            <td><%= render partial: "admin/layouts/management_links", 
-              locals: { 
-                      url_destroy: admin_page_path(page), 
-                      url_show: page_path(page), 
-                      url_edit: edit_admin_page_path(page) 
+        <td><%= render partial: "admin/panel/management_links", 
+              locals: {
+                destroy: { name: Page, url: admin_page_path(page) }, 
+                show: { name: Page, url: admin_page_path(page) },
+                edit: { name: Page, url: edit_admin_page_path(page) } 
                       } %></td>
       </tr>
     <% end %>

@@ -70,3 +70,5 @@ gem 'json'
 gem 'pg'
 
 gem 'meta-tags'
+
+gem "cancancan", "~> 3.5"

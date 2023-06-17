@@ -1,16 +1,18 @@
 module Admin
-  class PostsController < Base
-    before_action :set_post, only: %i[edit update destroy]
+  class PostsController < BaseResource
+    before_action :set_post, only: %i[show edit update destroy]
     before_action :set_categories, only: %i[new edit]
 
     def index
       @posts = Post.all
     end
 
-    def category_posts
-      @posts = Post.where(category_id: params[:category_id])
-      render 'index'
+    def comments
+      @post = Post.find(params[:post_id])
+      @comments = @post.comments
     end
+
+    def show; end
 
     def edit; end
 

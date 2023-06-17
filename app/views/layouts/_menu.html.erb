@@ -20,12 +20,13 @@
         <% end %>
       </div>
       <div class="col">
-        <p>Hello, <%= link_to current_admin_user.name, admin_admin_users_show_path, class: "link-primary" %>!</p>
-        <p><%= link_to 'Edit', admin_admin_users_edit_path, class: "btn btn-success", role: "button" %></p>
+        <p>Hello, <%= link_to current_admin_user.name, profile_path(name: current_admin_user.name), class: "link-primary" %>!</p>
+        <p><%= link_to 'Edit', edit_admin_user_registration_path, class: "btn btn-success", role: "button" %></p>
         <p> <%= button_to 'Log out', destroy_admin_user_session_path, class: "btn btn-danger", method: :delete %></p>
       </div>
     </div>
   <% else %>
     <%= link_to 'Log in', new_admin_user_session_path, class: "btn btn-outline-success" %>
+    <%= link_to 'Registeration', new_admin_user_registration_path, class: "btn btn-outline-success" %>
   <% end %>
 </div>

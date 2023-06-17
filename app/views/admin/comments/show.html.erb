@@ -1,16 +1,27 @@
 <div class="card" style="margin-bottom: 10px">
   <div class="card-header">
-    <%= render partial: 'admin/layouts/panel', locals: { url_edit: edit_admin_comment_path(@comment), url_destroy:admin_comment_path(@comment) } %>
+    <%= render partial: "admin/panel/management_links", 
+              locals: {
+                destroy: { name: Comment, url: admin_comment_path(@comment) }, 
+                show: { name: Comment, url: admin_comment_path(@comment) },
+                edit: { name: Comment, url: edit_admin_comment_path(@comment) } 
+                      } %>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><%= @comment.name %></li>
     <li class="list-group-item"><%= @comment.email %></li>
-    <li class="list-group-item"><%= link_to @comment.post.title, @comment.post %></li>
+    <li class="list-group-item"><%= humanize_boolean @comment.published %></li>
+    <li class="list-group-item"><%= link_to @comment.post.title, admin_post_path(@comment.post) %></li>
   </ul>
   <div class="card-body">
     <p class="card-text"><%= @comment.body %></p>
   </div>
   <div class="card-footer">
-    <%= render partial: 'admin/layouts/panel', locals: { url_edit: edit_admin_comment_path(@comment), url_destroy:admin_comment_path(@comment) } %>
+    <%= render partial: "admin/panel/management_links", 
+              locals: {
+                destroy: { name: Comment, url: admin_comment_path(@comment) }, 
+                show: { name: Comment, url: admin_comment_path(@comment) },
+                edit: { name: Comment, url: edit_admin_comment_path(@comment) } 
+                      } %>
   </div>
 </div>

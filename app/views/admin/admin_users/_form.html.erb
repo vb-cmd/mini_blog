@@ -1,5 +1,5 @@
-<%= javascript_include_tag "trix_code", type: "module" %>
-<%= form_with model: model, url: url do |f| %>
+<%= javascript_include_tag "trix_text", type: "module" %>
+<%= form_with model: @admin_user, url: url do |f| %>
   <div class="mb-3">
     <%= f.label :email,  "Email: ", class:"form-label" %>
     <%= f.email_field :email, class: "form-control" %>
@@ -17,6 +17,10 @@
   <div class="mb-3">
     <%= f.label :name,  "Name: ", class:"form-label" %>
     <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :role,  "Role: ", class:"form-label" %>
+    <%= f.select :role, @roles, {}, class: "form-select" %>
   </div>
   <div class="mb-3">
     <%= f.label :body, "Body: ", class:"form-label" %>
