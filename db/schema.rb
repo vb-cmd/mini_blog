@@ -109,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_081620) do
     t.string "meta_description"
     t.string "meta_keywords"
     t.string "name", null: false
+    t.text "body"
     t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true

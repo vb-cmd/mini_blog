@@ -4,14 +4,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user_record)
-    return if user_record.nil?
-
-    case user_record.role
-    when 'admin'
+    if user_record.nil?
+      anonymous
+    elsif user_record.admin?
       admin
-    when 'moderator'
+    elsif user_record.moderator?
       moderator
-    when 'user'
+    elsif user_record.user?
       user
     end
   end
@@ -23,14 +22,15 @@ class Ability
   end
 
   def moderator
-    can :manage, Category
-    can :manage, Post
-    can :manage, Comment
-    can :manage, Page
-    can %i[read posts], User
+    can :manage, :all
+    cannot %i[create edit destroy], User
   end
 
   def user
-    nil
+    cannot :manage, :all
+  end
+
+  def anonymous
+    cannot :manage, :all
   end
 end

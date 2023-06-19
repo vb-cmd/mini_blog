@@ -2,7 +2,7 @@
   title: @profile.meta_title,
   description: @profile.meta_description,
   keywords: @profile.meta_keywords,
-  canonical: profile_url(@profile),
+  canonical: user_profile_url(@profile.name),
 ) %>
 <div class="card" style="margin-bottom: 10px">
   <h1 class="card-header"><%= @profile.name %></h1>

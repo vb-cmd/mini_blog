@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col">
         <% if current_user.avatar.attached? %>
-          <%= link_to admin_users_show_path do %>
+          <%= link_to user_profile_path(current_user.name) do %>
             <%= image_tag current_user.avatar, size: "170x170" %>
           <% end %>
         <% else %>
@@ -20,7 +20,7 @@
         <% end %>
       </div>
       <div class="col">
-        <p>Hello, <%= link_to current_user.name, profile_path(name: current_user.name), class: "link-primary" %>!</p>
+        <p>Hello, <%= link_to current_user.name, user_profile_path(current_user.name), class: "link-primary" %>!</p>
         <p><%= link_to 'Edit', edit_user_registration_path, class: "btn btn-success", role: "button" %></p>
         <p> <%= button_to 'Log out', destroy_user_session_path, class: "btn btn-danger", method: :delete %></p>
       </div>

@@ -1,27 +1,28 @@
 Rails.application.routes.draw do
   scope module: :blog do
     root 'posts#index', as: 'home'
-    get 'profile/:name', to: 'user_profiles#show', as: 'profile'
+    resources :user_profiles, only: %i[show]
     get 'sitemap', to: 'sitemap#index', as: 'sitemap', format: :xml
     get 'search', to: 'search#index', as: 'search'
     get 'categories/:id', to: 'categories#show', as: 'category'
     get 'categories/:id/page/:page', to: 'categories#show', as: 'categories_page'
-    
+
     resources :pages, only: %i[show]
     resources :posts, only: %i[show index] do
       post 'comment', action: :show, to: 'comments#new'
       get 'page/:page', action: :index, on: :collection
     end
   end
-  
+
   namespace :admin do
-    get '/', to: 'dashboards#home'
+    get '/', to: 'dashboards#index'
+    get 'statistics', to: 'dashboards#statistics'
     resources :comments
     resources :users do
       get 'posts', to: 'users#posts'
     end
     resources :pages
-    
+
     resources :categories do
       get 'posts', to: 'categories#posts'
     end

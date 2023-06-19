@@ -1,4 +1,3 @@
-<%= javascript_include_tag "trix_text", type: "module" %>
 <%= form_with model: @user, url: url do |f| %>
   <div class="mb-3">
     <%= f.label :email,  "Email: ", class:"form-label" %>
@@ -24,7 +23,7 @@
   </div>
   <div class="mb-3">
     <%= f.label :body, "Body: ", class:"form-label" %>
-    <%= f.rich_text_area :body, class: "form-control" %>
+    <%= f.text_area :body, class: "form-control" %>
   </div>
   <div class="mb-3">
     <%= f.label :avatar, "Avatar: ", class:"form-label" %>
