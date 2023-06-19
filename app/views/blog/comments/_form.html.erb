@@ -1,18 +1,6 @@
 <div id="comment_message" class="alert" role="alert"></div>
 <div class="card" style="margin-bottom: 10px">
   <%= form_with url: post_comment_path(post_id:id), model: comment, html: { onsubmit:"return false;", id: 'comment_form'} do |f| %>
-    <div class="card-header">
-      <div class="row">
-        <div class="col">
-          <%= f.label :name, class:"form-label" %>
-          <%= f.text_field :name, class: "form-control", required: true %>
-        </div>
-        <div class="col">
-          <%= f.label :email, class:"form-label" %>
-          <%= f.email_field :email, class: "form-control", required: true %>
-        </div>
-      </div>
-    </div>
     <div class="card-body">
       <%= f.label :body, class:"form-label" %>
       <%= f.text_area :body, class: "form-control", required: true %>

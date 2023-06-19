@@ -2,17 +2,17 @@
   <div class="card-header">
     <%= render partial: "admin/panel/management_links", 
               locals: {
-                destroy: { name: AdminUser, url: admin_admin_user_path(@admin_user) }, 
-                show: { name: AdminUser, url: admin_admin_user_path(@admin_user) },
-                edit: { name: AdminUser, url: edit_admin_admin_user_path(@admin_user) } 
+                destroy: { name: User, url: admin_user_path(@user) }, 
+                show: { name: User, url: admin_user_path(@user) },
+                edit: { name: User, url: edit_admin_user_path(@user) } 
                       } %>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= @admin_user.email %></li>
-    <li class="list-group-item"><%= @admin_user.name %></li>
+    <li class="list-group-item"><%= @user.email %></li>
+    <li class="list-group-item"><%= @user.name %></li>
     <li class="list-group-item">
-      <% if @admin_user.avatar.attached? %>
-        <%= image_tag @admin_user.avatar, size: "300x300" %>
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, size: "300x300" %>
       <% else %>
         <svg class="bd-placeholder-img" height="300" width="300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
           <title>Placeholder</title>
@@ -23,14 +23,14 @@
     </li>
   </ul>
   <div class="card-body">
-    <p class="card-text"><%= @admin_user.body %></p>
+    <p class="card-text"><%= @user.body %></p>
   </div>
   <div class="card-footer">
     <%= render partial: "admin/panel/management_links", 
               locals: {
-                destroy: { name: AdminUser, url: admin_admin_user_path(@admin_user) }, 
-                show: { name: AdminUser, url: admin_admin_user_path(@admin_user) },
-                edit: { name: AdminUser, url: edit_admin_admin_user_path(@admin_user) } 
+                destroy: { name: User, url: admin_user_path(@user) }, 
+                show: { name: User, url: admin_user_path(@user) },
+                edit: { name: User, url: edit_admin_user_path(@user) } 
                       } %>
   </div>
 </div>

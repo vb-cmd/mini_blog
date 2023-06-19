@@ -8,8 +8,8 @@
                       } %>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= @comment.name %></li>
-    <li class="list-group-item"><%= @comment.email %></li>
+    <li class="list-group-item"><%= @comment.user.name %></li>
+    <li class="list-group-item"><%= @comment.user.email %></li>
     <li class="list-group-item"><%= humanize_boolean @comment.published %></li>
     <li class="list-group-item"><%= link_to @comment.post.title, admin_post_path(@comment.post) %></li>
   </ul>

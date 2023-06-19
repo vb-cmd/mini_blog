@@ -1,7 +1,7 @@
 module Admin
   class CommentsController < BaseResource
     before_action :set_comment, only: %i[edit update destroy show]
-    before_action :set_posts, only: %i[new edit]
+    before_action :set_posts_and_users, only: %i[new edit]
 
     def index
       @comments = Comment.all
@@ -44,12 +44,13 @@ module Admin
       @comment = Comment.find(params[:id])
     end
 
-    def set_posts
+    def set_posts_and_users
       @posts = Post.select_title_and_ids
+      @users = User.select_name_and_ids
     end
 
     def comment_params
-      params[:comment].permit(:name, :email, :body, :published, :post_id)
+      params[:comment].permit(:user_id, :body, :published, :post_id)
     end
   end
 end

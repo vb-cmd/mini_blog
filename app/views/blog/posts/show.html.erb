@@ -16,7 +16,11 @@
 </div>
 <!-- send comment -->
 <% if @post.comments_enabled? %>
-  <%= render partial: "blog/comments/form", locals: { comment: @new_comment, id: @post.id } %>
+  <% if signed_in? %>
+    <%= render partial: "blog/comments/form", locals: { comment: @new_comment, id: @post.id } %>
+  <% else %>
+    <p>You must be signed in to leave a comment.</p>
+  <% end %>
 <% else %>
   <p>Commenting is disabled.</p>
 <% end %>

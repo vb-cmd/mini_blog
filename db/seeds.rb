@@ -8,14 +8,15 @@ Category.create!(title: 'Default',
                  meta_keywords: 'category, meta, keywords')
 
 puts 'create an admin account'
-AdminUser.create!(email: 'admin@admin.com',
-                  password: 'password',
-                  password_confirmation: 'password',
-                  name: 'admin',
-                  body: 'Here your content',
-                  meta_title: 'Default',
-                  meta_description: 'Description category',
-                  meta_keywords: 'category, meta, keywords')
+User.create!(email: 'admin@admin.com',
+             role: 'admin',
+             password: 'password',
+             password_confirmation: 'password',
+             name: 'admin',
+             body: 'Here your content',
+             meta_title: 'Default',
+             meta_description: 'Description category',
+             meta_keywords: 'category, meta, keywords')
 
 puts 'create a post'
 Post.create!(category: Category.all.first,
@@ -27,14 +28,13 @@ Post.create!(category: Category.all.first,
              meta_title: 'Hello world!',
              meta_description: 'Description Hello world!',
              meta_keywords: 'hello, world, description',
-             admin_user: AdminUser.all.first)
+             user: User.all.first)
 
 puts 'create a comment'
-Comment.create!(name: 'Hello',
-                email: '4p5Q6@example.com',
+Comment.create!(user: User.first,
                 body: 'Here your content for comment',
                 published: true,
-                post_id: Post.all.first.id)
+                post: Post.first)
 
 puts 'create a page'
 Page.create!(title: 'About',

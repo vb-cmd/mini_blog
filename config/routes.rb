@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope module: :blog do
     root 'posts#index', as: 'home'
-    get 'profile/:name', to: 'admin_user_profiles#show', as: 'profile'
+    get 'profile/:name', to: 'user_profiles#show', as: 'profile'
     get 'sitemap', to: 'sitemap#index', as: 'sitemap', format: :xml
     get 'search', to: 'search#index', as: 'search'
     get 'categories/:id', to: 'categories#show', as: 'category'
@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: 'dashboards#home'
     resources :comments
-    resources :admin_users do
-      get 'posts', to: 'admin_users#posts'
+    resources :users do
+      get 'posts', to: 'users#posts'
     end
     resources :pages
     
@@ -30,5 +30,5 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :admin_users
+  devise_for :users
 end

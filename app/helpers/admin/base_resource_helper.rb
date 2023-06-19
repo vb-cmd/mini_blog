@@ -5,7 +5,7 @@ module Admin::BaseResourceHelper
       hash_name_and_path(Page, 'New page', new_admin_page_path),
       hash_name_and_path(Post, 'New post', new_admin_post_path),
       hash_name_and_path(Comment, 'New comment', new_admin_comment_path),
-      hash_name_and_path(AdminUser, 'New admin user', new_admin_admin_user_path)
+      hash_name_and_path(User, 'New admin user', new_admin_user_path)
     ]
   end
 
@@ -15,7 +15,7 @@ module Admin::BaseResourceHelper
       hash_name_and_path(Page, 'All pages', admin_pages_path),
       hash_name_and_path(Post, 'All posts', admin_posts_path),
       hash_name_and_path(Comment, 'All comments', admin_comments_path),
-      hash_name_and_path(AdminUser, 'All admin users', admin_admin_users_path)
+      hash_name_and_path(User, 'All admin users', admin_users_path)
     ]
   end
 

@@ -29,7 +29,7 @@ module Admin
     end
 
     def create
-      @post = Post.new(post_params.merge(admin_user: current_admin_user))
+      @post = Post.new(post_params.merge(user: current_user))
 
       if @post.save
         redirect_to post_path(@post)

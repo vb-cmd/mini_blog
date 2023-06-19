@@ -1,19 +1,15 @@
 <%= form_with model: @comment, url: url do |f| %>
   <div class="mb-3">
-    <%= f.label "Name: " %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-    <div class="mb-3">
-    <%= f.label "Email: " %>
-    <%= f.text_field :email, class: "form-control" %>
-  </div>
-  <div class="mb-3">
     <%= f.label "Body: " %>
     <%= f.text_area :body, class: "form-control" %>
   </div>
-    <div class="mb-3">
+  <div class="mb-3">
     <%= f.label "Published: ", class: 'form-check-label' %>
     <%= f.check_box :published, class: "form-check-input" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label "User: " %>
+    <%= f.select :user_id, @users, {}, class: "form-select" %>
   </div>
   <div class="mb-3">
     <%= f.label "Post: " %>

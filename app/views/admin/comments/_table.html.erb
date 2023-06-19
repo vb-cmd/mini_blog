@@ -14,8 +14,8 @@
     <% @comments.each do |comment| %>
       <tr>
         <th scope="row"><%= comment.id %></th>
-        <td><%= comment.name %></td>
-        <td><%= comment.email %></td>
+        <td><%= comment.user.name %></td>
+        <td><%= comment.user.email %></td>
         <td><%=comment.body %></td>
         <td><%= humanize_boolean comment.published %></td>
         <td><%= link_to comment.post.title, admin_post_path(comment.post) %></td>

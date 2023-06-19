@@ -13,7 +13,7 @@
     <li class="list-group-item"><%= humanize_boolean @post.published %></li>
     <li class="list-group-item"><%= humanize_boolean @post.comments_enabled %></li>
     <li class="list-group-item"><%= link_to @post.category.title, admin_category_path(@post.category) %></li>
-    <li class="list-group-item"><%= link_to @post.admin_user.name, admin_admin_user_path(@post.admin_user) %></li>
+    <li class="list-group-item"><%= link_to @post.user.name, admin_user_path(@post.user) %></li>
     <li class="list-group-item"><%= @post.meta_title %></li>
     <li class="list-group-item"><%= @post.meta_description %></li>
     <li class="list-group-item"><%= @post.meta_keywords %></li>

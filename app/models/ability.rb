@@ -27,7 +27,7 @@ class Ability
     can :manage, Post
     can :manage, Comment
     can :manage, Page
-    can %i[read posts], AdminUser
+    can %i[read posts], User
   end
 
   def user

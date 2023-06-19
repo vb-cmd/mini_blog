@@ -1,8 +1,7 @@
 module Blog
   class CommentsController < ApplicationController
-    before_action do
-      render_errors([t('.not_allowed')], :forbidden) unless can_create_comment?
-    end
+    before_action :authenticate_user!
+    before_action :comments_are_not_allowed, unless: :can_create_comment?
 
     def new
       @comment = Comment.new(comment_params)
@@ -16,14 +15,18 @@ module Blog
 
     private
 
+    def comments_are_not_allowed
+      render_errors([t('.not_allowed')], :forbidden)
+    end
+
     def can_create_comment?
       Post.find(params[:post_id]).comments_enabled?
     end
 
     def comment_params
       params.require(:comment)
-            .permit(:name, :email, :body)
-            .merge(post_id: params[:post_id], published: true)
+            .permit(:body)
+            .merge(post_id: params[:post_id], user: current_user)
     end
 
     def render_comment(comment)
