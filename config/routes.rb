@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     resources :pages, only: %i[show]
     resources :posts, only: %i[show index] do
-      post 'comment', action: :show, to: 'comments#new'
+      resources :comments, only: %i[create]
       get 'page/:page', action: :index, on: :collection
     end
   end

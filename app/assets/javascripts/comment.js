@@ -1,5 +1,4 @@
 const comment_form = document.getElementById('comment_form');
-const comments = document.getElementById('comments');
 const comment_message = document.getElementById('comment_message');
 
 function addComment() {
@@ -11,7 +10,7 @@ function addComment() {
 
             switch (response.status) {
                 case 201:
-                    createTemplateComment(text);;
+                    createCommentCreated(text);;
                     break;
 
                 case 403, 422:
@@ -23,17 +22,20 @@ function addComment() {
 }
 
 
-function createError(errors_body) {
+function createError(body) {
+    comment_message.innerHTML = '';
+    comment_message.classList.remove('alert-success');
+    
     comment_message.classList.add('alert-danger');
-    comment_message.innerHTML = errors_body;
+    comment_message.innerHTML = body;
 }
 
-function createTemplateComment(comment_body) {
-    let div = document.createElement('div');
-    div.innerHTML = comment_body
-
-    comment_message.classList.remove('alert-danger');
+function createCommentCreated(body) {
     comment_message.innerHTML = '';
+    comment_message.classList.remove('alert-danger');
 
-    comments.appendChild(div);
+    comment_message.classList.add('alert-success');
+    comment_message.innerHTML = body;
+
+    comment_form.reset();
 }
