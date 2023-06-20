@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :users do
       get 'posts', to: 'users#posts'
+      get 'comments', to: 'users#comments'
     end
     resources :pages
 

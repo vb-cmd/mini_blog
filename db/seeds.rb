@@ -14,10 +14,7 @@ puts 'create users'
     password: 'password',
     password_confirmation: 'password',
     name: role,
-    body: 'Here your content',
-    meta_title: 'Default',
-    meta_description: 'Description category',
-    meta_keywords: 'category, meta, keywords')
+    body: 'Here your content')
 end
 
 puts 'create a post'

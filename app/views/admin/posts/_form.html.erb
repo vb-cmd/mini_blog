@@ -1,44 +1,46 @@
 <%= javascript_include_tag "trix_text", type: "module" %>
 
+<%= render partial: "admin/panel/form_errors", locals: { model: @post } %>
+
 <%= form_with model: @post, url: url do |f| %>
   <div class="mb-3">
-    <%= f.label "Title: " %>
+    <%= f.label :title, t('admin.posts.form.title'), class: "form-label" %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
     <div class="mb-3">
-    <%= f.label "Description: " %>
+    <%= f.label :description, t('admin.posts.form.description'), class: "form-label" %>
     <%= f.rich_text_area :description, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label "Body: " %>
+    <%= f.label :body, t('admin.posts.form.body'), class: "form-label" %>
     <%= f.rich_text_area :body, class: "form-control" %>
   </div>
     <div class="mb-3">
-    <%= f.label "Published: ", class: "form-check-label" %>
+    <%= f.label :published, t('admin.posts.form.published'), class: "form-check-label" %>
     <%= f.check_box :published, class: "form-check-input" %>
   </div>
       <div class="mb-3">
-    <%= f.label "Comments enabled: ", class: "form-check-label" %>
+    <%= f.label :comments_enabled, t('admin.posts.form.comments_enabled'), class: "form-check-label" %>
     <%= f.check_box :comments_enabled, class: "form-check-input" %>
   </div>
   <div class="mb-3">
-    <%= f.label "Category: " %>
-    <%= f.select :category_id, @categories, {}, class: "form-control" %>
+    <%= f.label :category_id, t('admin.posts.form.category'), class: "form-label" %>
+    <%= f.select :category_id, all_categories_name_and_id, {}, class: "form-control" %>
   </div>
-  <h2>Meta data: </h2>
+  <h2><%= t('admin.posts.form.meta') %></h2>
   <div class="mb-3">
-    <%= f.label "Title: " %>
+    <%= f.label :meta_title, t('admin.posts.form.meta_title'), class: "form-label" %>
     <%= f.text_field :meta_title, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label "Description: " %>
+    <%= f.label :meta_description, t('admin.posts.form.meta_description'), class: "form-label" %>
     <%= f.text_field :meta_description, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label "Keywords: " %>
+    <%= f.label :meta_keywords, t('admin.posts.form.meta_keywords'), class: "form-label" %>
     <%= f.text_field :meta_keywords, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit t('admin.posts.form.submit'), class: 'btn btn-primary' %>
   </div>
 <% end %>

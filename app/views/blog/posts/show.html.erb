@@ -12,17 +12,18 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><%= t('.category') %> <%= link_to @post.category.title, category_path(@post.category), class: "card-link" %></li>
     <li class="list-group-item"><%= t('.added') %> <%= @post.date_created %></li>
+    <li class="list-group-item"><%= t('.author') %> <%= link_to @post.user.name, user_profile_path(@post.user.name), class: 'card-link' %></li>
   </ul>
 </div>
 <!-- send comment -->
 <% if @post.comments_enabled? %>
   <% if signed_in? %>
-    <%= render partial: "blog/comments/form", locals: { comment: @new_comment, id: @post.id } %>
+    <%= render partial: "blog/comments/form", locals: { url: post_comments_path(@post)} %>
   <% else %>
-    <p>You must be signed in to leave a comment.</p>
+    <p><%= t('.sign_in_to_comment') %></p>
   <% end %>
 <% else %>
-  <p>Commenting is disabled.</p>
+  <p><%= t('.disabled_comment') %></p>
 <% end %>
 <!-- comments -->
 <div id="comments">
@@ -31,6 +32,6 @@
       <%= render partial: "blog/comments/comment", locals: { comment: comment } %>
     <% end %>
   <% else %>
-    <p>There are no comments. Leave a comment and be the first.</p>
+    <p><%= t('.there_no_comments') %></p>
   <% end %>
 </div>

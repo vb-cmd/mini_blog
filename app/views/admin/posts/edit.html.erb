@@ -1,2 +1,6 @@
-<h1>Edit a post</h1>
+<% set_meta_tags(
+  title: t('.meta.title', title: @post.title),
+) %>
+
+<h1><%= t('.title') %></h1>
 <%= render partial: 'form', locals: { url: admin_post_path(@post) } %>

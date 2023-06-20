@@ -1,11 +1,16 @@
+<% set_meta_tags(
+  title: t('.meta.title'),
+) %>
+
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Email</th>
-      <th scope="col">Name</th>
-      <th scope="col">Posts count</th>
-      <th scope="col">Management</th>
+      <th scope="col"><%= t('.table.number') %></th>
+      <th scope="col"><%= t('.table.email') %></th>
+      <th scope="col"><%= t('.table.name') %></th>
+      <th scope="col"><%= t('.table.posts') %></th>
+       <th scope="col"><%= t('.table.comments') %></th>
+      <th scope="col"><%= t('.table.management') %></th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +20,7 @@
         <td><%= user.email %></td>
         <td><%= user.name %></td>
         <td><%= link_to user.posts.count, admin_user_posts_path(user) %></td>
+        <td><%= link_to user.comments.count, admin_user_comments_path(user) %></td>
         <td>       <%= render partial: "admin/panel/management_links", 
               locals: {
                 destroy: { name: User, url: admin_user_path(user) }, 

@@ -1,12 +1,12 @@
 <div id="comment_message" class="alert" role="alert"></div>
 <div class="card" style="margin-bottom: 10px">
-  <%= form_with url: post_comments_path(post_id:id), model: comment, html: { onsubmit:"return false;", id: 'comment_form'} do |f| %>
+  <%= form_with url: url, html: { onsubmit:"return false;", id: 'comment_form'} do |f| %>
     <div class="card-body">
-      <%= f.label :body, class:"form-label" %>
-      <%= f.text_area :body, class: "form-control", required: true %>
+      <%= f.label 'comment[body]', t('blog.comments.views.form.body'), class:"form-label" %>
+      <%= f.text_area 'comment[body]', class: "form-control", required: true %>
     </div>
     <div class="card-body">
-      <%= f.submit "Leave a comment", class: "btn btn-primary", onclick: 'addComment();' %>
+      <%= f.submit t('blog.comments.views.form.submit'), class: "btn btn-primary", onclick: 'addComment();' %>
     </div>
   <% end %>
 </div>

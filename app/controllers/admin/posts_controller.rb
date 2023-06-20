@@ -1,7 +1,6 @@
 module Admin
   class PostsController < BaseResource
     before_action :set_post, only: %i[show edit update destroy]
-    before_action :set_categories, only: %i[new edit]
 
     def index
       @posts = Post.all
@@ -18,9 +17,9 @@ module Admin
 
     def update
       if @post.update(post_params)
-        redirect_to post_path(@post)
+        redirect_to admin_post_path(@post), notice: 'Post was successfully updated.'
       else
-        redirect_to edit_admin_post_path(@post)
+        render 'edit', alert: 'Post was not updated.'
       end
     end
 
@@ -29,18 +28,18 @@ module Admin
     end
 
     def create
-      @post = Post.new(post_params.merge(user: current_user))
+      @post = Post.new(post_params_with_user)
 
       if @post.save
-        redirect_to post_path(@post)
+        redirect_to admin_post_path(@post), notice: 'Post was successfully created.'
       else
-        redirect_to new_admin_post_path
+        render 'new', alert: 'Post was not created.'
       end
     end
 
     def destroy
       @post.destroy
-      redirect_to admin_posts_path
+      redirect_to admin_posts_path, notice: 'Post was successfully destroyed.'
     end
 
     private
@@ -49,14 +48,14 @@ module Admin
       @post = Post.find(params[:id])
     end
 
-    def set_categories
-      @categories = Category.select_title_and_ids
-    end
-
     def post_params
       params[:post].permit(:title, :body, :published,
                            :description, :category_id, :comments_enabled,
                            :meta_title, :meta_description, :meta_keywords)
+    end
+
+    def post_params_with_user
+      post_params.merge(user: current_user)
     end
   end
 end

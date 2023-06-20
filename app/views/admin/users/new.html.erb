@@ -1,2 +1,6 @@
-<h1>Create a new admin user</h1>
+<% set_meta_tags(
+  title: t('.meta.title'),
+) %>
+
+<h1><%= t('.title') %></h1>
 <%= render 'form', url: admin_users_path %>

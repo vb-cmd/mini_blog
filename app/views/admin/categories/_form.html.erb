@@ -2,27 +2,27 @@
 
 <%= form_with model: @category, url: url do |f| %>
   <div class="mb-3">
-    <%= f.label "Title: " %>
+    <%= f.label :title, t('admin.categories.form.title'), class:"form-label" %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label "Description: " %>
+    <%= f.label :description, t('admin.categories.form.description'), class:"form-label" %>
     <%= f.rich_text_area :description, class: "form-control" %>
   </div>
-  <h2>Meta data: </h2>
+  <h2><%= t('admin.categories.form.meta') %></h2>
   <div class="mb-3">
-    <%= f.label "Title: " %>
+    <%= f.label :meta_title, t('admin.categories.form.meta_title'), class:"form-label" %>
     <%= f.text_field :meta_title, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label "Description: " %>
+    <%= f.label :meta_description, t('admin.categories.form.meta_description'), class:"form-label" %>
     <%= f.text_field :meta_description, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label "Keywords: " %>
+    <%= f.label :meta_keywords, t('admin.categories.form.meta_keywords'), class:"form-label" %>
     <%= f.text_field :meta_keywords, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit t('admin.categories.form.submit'), class: 'btn btn-primary' %>
   </div>
 <% end %>

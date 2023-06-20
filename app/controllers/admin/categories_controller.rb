@@ -17,9 +17,9 @@ module Admin
 
     def update
       if @category.update(category_params)
-        redirect_to category_path(@category)
+        redirect_to admin_category_path(@category), notice: 'Category was successfully updated.'
       else
-        redirect_to new_category_path
+        redirect_to edit_admin_category_path(@category), alert: 'Category was not updated.'
       end
     end
 
@@ -31,15 +31,15 @@ module Admin
       @category = Category.new(category_params)
 
       if @category.save
-        redirect_to category_path(@category)
+        redirect_to admin_category_path(@category), notice: 'Category was successfully created.'
       else
-        redirect_to new_category_path
+        redirect_to new_admin_category_path, alert: 'Category was not created.'
       end
     end
 
     def destroy
       @category.destroy
-      redirect_to admin_categories_path
+      redirect_to admin_categories_path, notice: 'Category was successfully destroyed.'
     end
 
     private

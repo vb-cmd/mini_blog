@@ -1,48 +1,35 @@
+<%= render partial: "admin/panel/form_errors", locals: { model: @user } %>
+
 <%= form_with model: @user, url: url do |f| %>
   <div class="mb-3">
-    <%= f.label :email,  "Email: ", class:"form-label" %>
+    <%= f.label :email, t('admin.users.form.email'), class:"form-label" %>
     <%= f.email_field :email, class: "form-control" %>
   </div>
-  <% if params[:action] == 'new' %>
-    <div class="mb-3">
-      <%= f.label :password, "Password: ", class:"form-label" %>
-      <%= f.text_field :password, class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :password_confirmation, "Password confirmation: ", class:"form-label" %>
-      <%= f.text_field :password_confirmation, class: "form-control" %>
-    </div>
-  <% end %>
   <div class="mb-3">
-    <%= f.label :name,  "Name: ", class:"form-label" %>
+    <%= f.label :password, t('admin.users.form.password'), class:"form-label" %>
+    <%= f.text_field :password, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :password_confirmation, t('admin.users.form.password_confirmation'), class:"form-label" %>
+    <%= f.text_field :password_confirmation, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :name, t('admin.users.form.name'), class:"form-label" %>
     <%= f.text_field :name, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label :role,  "Role: ", class:"form-label" %>
-    <%= f.select :role, @roles, {}, class: "form-select" %>
+    <%= f.label :role, t('admin.users.form.role'), class:"form-label" %>
+    <%= f.select :role, all_user_roles, {}, class: "form-select" %>
   </div>
   <div class="mb-3">
-    <%= f.label :body, "Body: ", class:"form-label" %>
+    <%= f.label :body, t('admin.users.form.body'), class:"form-label" %>
     <%= f.text_area :body, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label :avatar, "Avatar: ", class:"form-label" %>
+    <%= f.label :avatar, t('admin.users.form.avatar'), class:"form-label" %>
     <%= f.file_field :avatar, class: "form-control" %>
   </div>
-  <h2>Meta data: </h2>
   <div class="mb-3">
-    <%= f.label "Title: " %>
-    <%= f.text_field :meta_title, class: "form-control" %>
-  </div>
-  <div class="mb-3">
-    <%= f.label "Description: " %>
-    <%= f.text_field :meta_description, class: "form-control" %>
-  </div>
-  <div class="mb-3">
-    <%= f.label "Keywords: " %>
-    <%= f.text_field :meta_keywords, class: "form-control" %>
-  </div>
-  <div class="mb-3">
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit t('admin.users.form.submit'), class: 'btn btn-primary' %>
   </div>
 <% end %>

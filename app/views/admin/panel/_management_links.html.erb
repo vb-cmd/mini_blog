@@ -2,17 +2,17 @@
   <div class="row">
     <% if can? :read, show[:name] %>
       <div class="col">
-        <%= link_to 'Show', show[:url], class: "btn btn-primary", role: "button" %>
+        <%= link_to t('admin.panel.management_links.show'), show[:url], class: "btn btn-primary", role: "button" %>
       </div>
     <% end %>
     <% if can? :edit, edit[:name] %>
       <div class="col">
-        <%= link_to 'Edit', edit[:url], class: "btn btn-warning", role: "button" %>
+        <%= link_to t('admin.panel.management_links.edit'), edit[:url], class: "btn btn-warning", role: "button" %>
       </div>
     <% end %>
     <% if can? :destroy, destroy[:name] %>
       <div class="col">
-        <%= button_to 'Destroy', destroy[:url], method: :delete, class: "btn btn-danger" %>
+        <%= button_to t('admin.panel.management_links.delete'), destroy[:url], method: :delete, class: "btn btn-danger" %>
       </div>
     <% end %>
   </div>

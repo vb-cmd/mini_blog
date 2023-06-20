@@ -1,2 +1,6 @@
-<h1>Edit a category</h1>
+<% set_meta_tags(
+  title: t('.meta.title', title: @category.title),
+) %>
+
+<h1><%= t('.title') %></h1>
 <%= render partial: 'form', locals: { url: admin_category_path(@category) } %>

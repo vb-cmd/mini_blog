@@ -12,9 +12,9 @@ module Admin
 
     def update
       if @page.update(page_params)
-        redirect_to page_path(@page)
+        redirect_to admin_page_path(@page), notice: 'Page was successfully updated.'
       else
-        redirect_to new_page_path
+        render 'edit', alert: 'Page was not updated.'
       end
     end
 
@@ -26,15 +26,15 @@ module Admin
       @page = Page.new(page_params)
 
       if @page.save
-        redirect_to page_path(@page)
+        redirect_to admin_page_path(@page), notice: 'Page was successfully created.'
       else
-        redirect_to new_page_path
+        render 'new', alert: 'Page was not created.'
       end
     end
 
     def destroy
       @page.destroy
-      redirect_to admin_pages_path
+      redirect_to admin_pages_path, notice: 'Page was successfully destroyed.'
     end
 
     private

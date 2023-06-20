@@ -1,7 +1,7 @@
 module Admin
   class UsersController < BaseResource
     before_action :set_user, only: %i[show edit update destroy]
-    before_action :set_user_roles, only: %i[edit new]
+    before_action :set_user_for_resources, only: %i[posts comments]
 
     def index
       @users = User.all
@@ -12,15 +12,18 @@ module Admin
     def show; end
 
     def posts
-      @user = User.find(params[:user_id])
       @posts = @user.posts
     end
 
+    def comments
+      @comments = @user.comments
+    end
+
     def update
-      if @user.update(edit_user_params)
-        redirect_to admin_user_path(@user)
+      if @user.update(user_params)
+        redirect_to admin_user_path(@user), notice: 'User was successfully updated.'
       else
-        redirect_to edit_admin_user_path(@user)
+        render 'edit', alert: 'User was not updated.'
       end
     end
 
@@ -29,18 +32,18 @@ module Admin
     end
 
     def create
-      @user = User.new(new_user_params)
+      @user = User.new(user_params)
 
       if @user.save
-        redirect_to admin_user_path(@user)
+        redirect_to admin_user_path(@user), notice: 'User was successfully created.'
       else
-        redirect_to new_admin_user_path
+        render 'new', alert: 'User was not created.'
       end
     end
 
     def destroy
       @user.destroy
-      redirect_to admin_users_path
+      redirect_to admin_users_path, notice: 'User was successfully destroyed.'
     end
 
     private
@@ -49,18 +52,13 @@ module Admin
       @user = User.find(params[:id])
     end
 
-    def set_user_roles
-      @roles = User.roles.keys
+    def set_user_for_resources
+      @user = User.find(params[:user_id])
     end
 
-    def new_user_params
+    def user_params
       params[:user].permit(:email, :password, :password_confirmation,
                            :body, :avatar, :name, :role,
-                           :meta_title, :meta_description, :meta_keywords)
-    end
-
-    def edit_user_params
-      params[:user].permit(:email, :body, :avatar, :name, :role,
                            :meta_title, :meta_description, :meta_keywords)
     end
   end

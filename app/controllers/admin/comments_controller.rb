@@ -1,7 +1,6 @@
 module Admin
   class CommentsController < BaseResource
     before_action :set_comment, only: %i[edit update destroy show]
-    before_action :set_posts_and_users, only: %i[new edit]
 
     def index
       @comments = Comment.all
@@ -13,9 +12,9 @@ module Admin
 
     def update
       if @comment.update(comment_params)
-        redirect_to admin_comment_path(@comment)
+        redirect_to admin_comment_path(@comment), notice: 'Comment was successfully updated.'
       else
-        redirect_to new_admin_comment_path
+        render 'edit', alert: 'Comment was not updated.'
       end
     end
 
@@ -27,26 +26,21 @@ module Admin
       @comment = Comment.new(comment_params)
 
       if @comment.save
-        redirect_to admin_comment_path(@comment)
+        redirect_to admin_comment_path(@comment), notice: 'Comment was successfully created.'
       else
-        redirect_to new_admin_comment_path
+        render 'new', alert: 'Comment was not created.'
       end
     end
 
     def destroy
       @comment.destroy
-      redirect_to admin_comments_path
+      redirect_to admin_comments_path, notice: 'Comment was successfully destroyed.'
     end
 
     private
 
     def set_comment
       @comment = Comment.find(params[:id])
-    end
-
-    def set_posts_and_users
-      @posts = Post.select_title_and_ids
-      @users = User.select_name_and_ids
     end
 
     def comment_params

@@ -1,2 +1,6 @@
-<h1>Edit a admin user</h1>
+<% set_meta_tags(
+  title: t('.meta.title', name: @user.name),
+) %>
+
+<h1><%= t('.title') %></h1>
 <%= render 'form', url: admin_user_path(@user) %>

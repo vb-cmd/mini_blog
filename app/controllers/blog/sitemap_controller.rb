@@ -1,10 +1,7 @@
 module Blog
   class SitemapController < ApplicationController
     def index
-      @url_and_date = [hash_home]
-                      .concat(hash_pages)
-                      .concat(hash_categories)
-                      .concat(hash_posts)
+      @url_and_date = [hash_home].concat(hash_pages, hash_categories, hash_posts)
     end
 
     private

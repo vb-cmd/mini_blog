@@ -1,3 +1,7 @@
+<% set_meta_tags(
+  title: t('.meta.title', name: @user.name),
+) %>
+
 <div class="card" style="margin-bottom: 10px">
   <div class="card-header">
     <%= render partial: "admin/panel/management_links", 
@@ -9,7 +13,7 @@
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><%= @user.email %></li>
-    <li class="list-group-item"><%= @user.name %></li>
+    <li class="list-group-item"><%= link_to @user.name, user_profile_path(@user.name) %></li>
     <li class="list-group-item">
       <% if @user.avatar.attached? %>
         <%= image_tag @user.avatar, size: "300x300" %>

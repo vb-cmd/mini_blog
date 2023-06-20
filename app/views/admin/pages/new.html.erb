@@ -1,2 +1,6 @@
-<h1>Create a new page</h1>
+<% set_meta_tags(
+  title: t('.meta.title'),
+) %>
+
+<h1><%= t('.title') %></h1>
 <%= render partial: 'form', locals: { url: admin_pages_path } %>

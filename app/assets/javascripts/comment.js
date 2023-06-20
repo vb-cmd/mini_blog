@@ -10,7 +10,7 @@ function addComment() {
 
             switch (response.status) {
                 case 201:
-                    createCommentCreated(text);;
+                    createCommentCreated(text);
                     break;
 
                 case 403, 422:

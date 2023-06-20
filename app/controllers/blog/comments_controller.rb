@@ -7,9 +7,9 @@ module Blog
       @comment = Comment.new(comment_params)
 
       if @comment.save
-        render_without_layout('messages', :created, messages: ['Comment created'])
+        render_without_layout('messages', :created, messages: [t('.success')])
       else
-        render_without_layout('messages', :unprocessable_entity, messages: @comment.errors.full_messages)
+        render_without_layout('messages', :unprocessable_entity, messages: [t('.errors')])
       end
     end
 

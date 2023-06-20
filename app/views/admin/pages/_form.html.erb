@@ -1,32 +1,34 @@
 <%= javascript_include_tag "trix_text", type: "module" %>
 
+<%= render partial: "admin/panel/form_errors", locals: { model: @page } %>
+
 <%= form_with model: @page, url: url do |f| %>
   <div class="mb-3">
-    <%= f.label "Title: " %>
+    <%= f.label :title, t('admin.pages.form.title'), class:"form-label" %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label "Body: " %>
+    <%= f.label :body, t('admin.pages.form.body'), class:"form-label" %>
     <%= f.rich_text_area :body, class: "form-control" %>
   </div>
     <div class="mb-3">
-    <%= f.label "Published: ", class: "form-check-label" %>
+    <%= f.label :published, t('admin.pages.form.published'), class: "form-check-label" %>
     <%= f.check_box :published, class: "form-check-input" %>
   </div>
-  <h2>Meta data: </h2>
+  <h2><%= t('admin.pages.form.meta') %> </h2>
   <div class="mb-3">
-    <%= f.label "Title: " %>
+    <%= f.label :meta_title, t('admin.pages.form.meta_title'), class:"form-label" %>
     <%= f.text_field :meta_title, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label "Description: " %>
+    <%= f.label :meta_description, t('admin.pages.form.meta_description'), class:"form-label" %>
     <%= f.text_field :meta_description, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label "Keywords: " %>
+    <%= f.label :meta_keywords, t('admin.pages.form.meta_keywords'), class:"form-label" %>
     <%= f.text_field :meta_keywords, class: "form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit t('admin.pages.form.submit'), class: 'btn btn-primary' %>
   </div>
 <% end %>

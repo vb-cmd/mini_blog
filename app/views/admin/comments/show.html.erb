@@ -1,3 +1,7 @@
+<% set_meta_tags(
+  title: "Comment from post: #{@comment.post.title}"
+) %>
+
 <div class="card" style="margin-bottom: 10px">
   <div class="card-header">
     <%= render partial: "admin/panel/management_links", 
@@ -8,8 +12,7 @@
                       } %>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= @comment.user.name %></li>
-    <li class="list-group-item"><%= @comment.user.email %></li>
+    <li class="list-group-item"><%= link_to @comment.user.name, admin_user_path(@comment.user) %></li>
     <li class="list-group-item"><%= humanize_boolean @comment.published %></li>
     <li class="list-group-item"><%= link_to @comment.post.title, admin_post_path(@comment.post) %></li>
   </ul>
