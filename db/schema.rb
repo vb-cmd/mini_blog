@@ -105,9 +105,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_081620) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "meta_title"
-    t.string "meta_description"
-    t.string "meta_keywords"
     t.string "name", null: false
     t.text "body"
     t.integer "role", default: 0

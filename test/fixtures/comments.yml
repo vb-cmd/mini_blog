@@ -4,23 +4,20 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: 
- name: Name
- body: text test
- email: "email@me.com"
- published: true 
- post: one
+one:
+  user: admin
+  post: one
+  body: one comment body
+  published: true 
 
 two:
- name: Name2
- body: text test2
- email: "email2@me.com"
- published: false
- post: one
+  user: admin
+  post: one
+  body: two comment body
+  published: true
 
-three:
- name: Name3
- body: text test3
- email: "email3@me.com"
- published: true
- post: one
+invisible:
+  user: admin
+  post: one
+  body: text test3
+  published: false

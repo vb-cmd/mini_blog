@@ -1,16 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyText
+  meta_title: One page meta title
+  meta_description: One page meta description
+  meta_keywords: One, page, keywords, meta
+  title: One page title
   published: true
 
 two:
-  title: MyString
-  body: MyText
+  meta_title: Two page meta title
+  meta_description: Two page meta description
+  meta_keywords: Two, page, keywords, meta
+  title: Two page title
   published: true
   
-negative:
-  title: MyString
-  body: MyText
+invisible:
+  meta_title: Invisible page meta title
+  meta_description: Invisible page meta description
+  meta_keywords: Invisible, page, keywords, meta
+  title: Invisible page title
   published: false

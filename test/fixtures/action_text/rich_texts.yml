@@ -1,4 +1,63 @@
-# one:
-#   record: name_of_fixture (ClassOfFixture)
-#   name: content
-#   body: <p>In a <i>million</i> stars!</p>
+# Categories
+category_one:
+  record: categories(:one)
+  name: description
+  body: <p>Category one description</p>
+
+category_two:
+  record: categories(:two)
+  name: description
+  body: <p>Category two description</p>
+
+# Pages
+page_one:
+  record: pages(:one)
+  name: body
+  body: <p>One page body</p>
+
+page_two:
+  record: pages(:two)
+  name: body
+  body: <p>Two page body</p>
+
+page_invisible:
+  record: pages(:invisible)
+  name: body
+  body: <p>Invisible page body</p>
+
+# Posts
+post_one:
+  record: posts(:one)
+  name: body
+  body: <p>One post body</p>
+
+post_two:
+  record: posts(:two)
+  name: body
+  body: <p>Two post body</p>
+
+post_invisible:
+  record: posts(:invisible)
+  name: body
+  body: <p>Invisible post body</p>
+
+post_disabled_comments:
+  record: posts(:disabled_comments)
+  name: body
+  body: <p>Disabled comments post body</p>
+
+# Users
+user_admin:
+  record: users(:admin)
+  name: body
+  body: "<p>Admin body</p>"
+
+user_admin:
+  record: users(:moderator)
+  name: body
+  body: "<p>Moderator body</p>"
+
+user_user:
+  record: users(:user)
+  name: body
+  body: "<p>User body</p>"

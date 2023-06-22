@@ -9,12 +9,12 @@ Category.create!(title: 'Default',
 
 puts 'create users'
 %w[admin moderator user].each do |role|
-    User.create!(email: "#{role}@#{role}.com",
-    role: role,
-    password: 'password',
-    password_confirmation: 'password',
-    name: role,
-    body: 'Here your content')
+  User.create!(email: "#{role}@#{role}.com",
+               role:,
+               password: 'password',
+               password_confirmation: 'password',
+               name: role,
+               body: 'Here your content')
 end
 
 puts 'create a post'

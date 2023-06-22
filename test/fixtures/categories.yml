@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  meta_title: Category one
+  meta_description: Category one description
+  meta_keywords: Category, one, keywords
   title: Category one
-  description: Category one description
 
 two:
+  meta_title: Category two
+  meta_description: Category two description
+  meta_keywords: Category, two, keywords
   title: Category two
-  description: Category two description

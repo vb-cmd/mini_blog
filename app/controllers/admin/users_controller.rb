@@ -58,8 +58,7 @@ module Admin
 
     def user_params
       params[:user].permit(:email, :password, :password_confirmation,
-                           :body, :avatar, :name, :role,
-                           :meta_title, :meta_description, :meta_keywords)
+                           :body, :avatar, :name, :role)
     end
   end
 end

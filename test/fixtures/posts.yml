@@ -1,25 +1,41 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: One posts
-  body: MyText 1
-  category: two
-  description: MyText 1
+  meta_title: One post meta title
+  meta_description: One post meta description
+  meta_keywords: One, post, keywords, meta
+  title: One post title
+  category: one
+  user: admin
   published: true
   comments_enabled: true
 
 two:
-  title: Two posts
-  body: MyText 2
-  category: one
-  description: MyText 2
+  meta_title: Two post meta title
+  meta_description: Two post meta description
+  meta_keywords: Two, post, keywords, meta
+  title: Two post title
+  category: two
+  user: admin
   published: true
   comments_enabled: true
 
-negative:
-  title: Two posts
-  body: MyText 2
+invisible:
+  meta_title: Invisible post meta title
+  meta_description: Invisible post meta description
+  meta_keywords: Invisible, post, keywords, meta
+  title: Invisible post title
   category: one
-  description: MyText 2
+  user: admin
   published: false
   comments_enabled: true
+
+disabled_comments:
+  meta_title: Disabled comments post meta title
+  meta_description: Disabled comments post meta description
+  meta_keywords: Disabled, comments, post, keywords, meta
+  title: Disabled comments post title
+  category: one
+  user: admin
+  published: true
+  comments_enabled: false
