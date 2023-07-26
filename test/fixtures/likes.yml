@@ -1,0 +1,9 @@
+one:
+  user: admin
+  record_type: <%= Post.first.class %>
+  record_id: <%= Post.first.id %>
+
+two: 
+  user: admin
+  record_type: <%= Post.second.class %>
+  record_id: <%= Post.second.id %>

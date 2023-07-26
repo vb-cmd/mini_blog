@@ -1,13 +1,13 @@
-require "test_helper"
+require 'test_helper'
 require_relative 'base_controller_test'
 
-class DashboardControllerTest < Admin::BaseControllerTest
-  test "should get index" do
+class Admin::DashboardControllerTest < Admin::BaseControllerTest
+  test 'should get index' do
     get admin_url
     assert_response :success
   end
 
-  test "should get statistics" do
+  test 'should get statistics' do
     get admin_statistics_url
     assert_response :success
   end

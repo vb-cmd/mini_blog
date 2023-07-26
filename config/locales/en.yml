@@ -45,7 +45,8 @@ en:
           title: 'Name: %{name}'
           keywords: '%{name}, profile %{name}, account %{name}, my %{name}, blog'
           description: 'Hello everyone! My name is %{name}. It is my official account on %{site_name}.'
-
+    likes:
+      update: 'Likes: %{count}'
   admin:
     dashboards:
       index:

@@ -5,7 +5,7 @@ class CreateCategories < ActiveRecord::Migration[7.0]
       t.string :meta_title
       t.string :meta_description
       t.string :meta_keywords
-      
+
       # category info
       t.string :title
 

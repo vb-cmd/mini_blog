@@ -1,5 +1,5 @@
 module Admin
-  class CategoriesController < BaseResource
+  class CategoriesController < BaseController
     before_action :set_category, only: %i[show edit update destroy]
 
     def index

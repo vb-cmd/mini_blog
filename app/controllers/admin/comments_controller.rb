@@ -1,5 +1,5 @@
 module Admin
-  class CommentsController < BaseResource
+  class CommentsController < BaseController
     before_action :set_comment, only: %i[edit update destroy show]
 
     def index

@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
     resources :pages, only: %i[show]
     resources :posts, only: %i[show index] do
-      resources :comments, only: %i[create]
+      match :likes, to: 'likes#update', via: %i[patch put]
+      post :comments, to: 'comments#create'
       get 'page/:page', action: :index, on: :collection
     end
   end

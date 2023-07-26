@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :user
 
+  has_many :likes, as: :record
+
   validates :title, presence: true
   validates :body, presence: true
   validates :description, presence: true
@@ -11,7 +13,7 @@ class Post < ApplicationRecord
 
   has_rich_text :body
   has_rich_text :description
-  
+
   paginates_per 10
 
   include FormatDate
@@ -31,5 +33,17 @@ class Post < ApplicationRecord
         .where(published: true)
         .find(id)
     end
+  end
+
+  def liked_by?(user)
+    likes.where(user:).any?
+  end
+
+  def unlike(user)
+    likes.where(user:).destroy_all
+  end
+
+  def like(user)
+    likes.where(user:).first_or_create
   end
 end

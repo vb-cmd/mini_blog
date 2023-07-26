@@ -5,12 +5,13 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.string :meta_title
       t.string :meta_description
       t.string :meta_keywords
-      
+
       # post info
       t.string :title
       t.boolean :published, default: true
       t.boolean :comments_enabled, default: true
       t.references :category, foreign_key: true
+      t.integer :likes_count, default: 0
 
       t.timestamps
     end

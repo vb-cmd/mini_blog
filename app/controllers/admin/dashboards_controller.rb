@@ -1,6 +1,8 @@
 module Admin
-  class DashboardsController < Base
+  class DashboardsController < BaseController
     before_action :authorize_read_action, only: %i[statistics index]
+
+    skip_load_and_authorize_resource
 
     def index; end
 
