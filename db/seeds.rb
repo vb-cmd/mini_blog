@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+[User, Category, Post, Comment, Page].each(&:destroy_all)
+
 puts 'create a category'
 Category.create!(title: 'Default',
                  description: 'Here your description',

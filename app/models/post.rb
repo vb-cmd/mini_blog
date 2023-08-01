@@ -21,6 +21,10 @@ class Post < ApplicationRecord
   extend SelectData
 
   class << self
+    def ransackable_attributes(auth_object = nil)
+      ["meta_description", "meta_keywords", "meta_title", "published", "title"]
+    end
+  
     def take_all_by_page(page)
       includes(:category)
         .where(published: true)

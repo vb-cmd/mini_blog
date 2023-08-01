@@ -3,7 +3,7 @@ require_relative 'base_controller_test'
 
 class Admin::UsersControllerTest < Admin::BaseControllerTest
   setup do
-    @user = users(:admin)
+    @admin = users(:admin)
   end
 
   test 'should get index' do
@@ -12,34 +12,34 @@ class Admin::UsersControllerTest < Admin::BaseControllerTest
   end
 
   test 'should get user comments' do
-    get admin_user_comments_url(@user)
+    get admin_user_comments_url(@admin)
     assert_response :success
   end
 
   test 'should get user posts' do
-    get admin_user_comments_url(@user)
+    get admin_user_comments_url(@admin)
     assert_response :success
   end
 
   test 'should get edit' do
-    get edit_admin_user_url(@user)
+    get edit_admin_user_url(@admin)
     assert_response :success
   end
 
   test 'should get show' do
-    get admin_user_url(@user)
+    get admin_user_url(@admin)
     assert_response :success
   end
 
   test 'should update user' do
     body = 'Updated body'
 
-    patch admin_user_url(@user), params: { user: { body: } }
+    patch admin_user_url(@admin), params: { user: { body: } }
 
-    @user.reload
+    @admin.reload
 
-    assert_redirected_to admin_user_url(@user), notice: 'User was successfully updated.'
-    assert_equal body, @user.body
+    assert_redirected_to admin_user_url(@admin), notice: 'User was successfully updated.'
+    assert_equal body, @admin.body
   end
 
   test 'should get new' do
@@ -79,6 +79,7 @@ class Admin::UsersControllerTest < Admin::BaseControllerTest
   end
 
   test 'should destroy user' do
+    @user = users(:user)
     delete admin_user_url(@user)
 
     assert_redirected_to admin_users_url,

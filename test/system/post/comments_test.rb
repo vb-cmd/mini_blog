@@ -1,13 +1,6 @@
-require 'application_system_test_case'
+require_relative 'base_test'
 
-class CommentsToPostTest < ApplicationSystemTestCase
-  include Devise::Test::IntegrationHelpers
-
-  setup do
-    sign_in users(:admin)
-    @post = posts(:one)
-  end
-
+class Post::CommentsTest < Post::BaseTest
   test 'create a new comment' do
     body = 'new comment'
     visit post_url(@post)

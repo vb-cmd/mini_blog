@@ -1,9 +1,7 @@
 one:
   user: admin
-  record_type: <%= Post.first.class %>
-  record_id: <%= Post.first.id %>
+  record: posts(:one)
 
 two: 
   user: admin
-  record_type: <%= Post.second.class %>
-  record_id: <%= Post.second.id %>
+  record: posts(:two)

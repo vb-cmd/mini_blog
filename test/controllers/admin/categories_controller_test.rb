@@ -1,7 +1,7 @@
 require 'test_helper'
 require_relative 'base_controller_test'
 
-class Admin::CategoriesControllerTest < BaseControllerTest
+class Admin::CategoriesControllerTest < Admin::BaseControllerTest
   setup do
     @category = categories(:one)
   end

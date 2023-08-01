@@ -1,13 +1,6 @@
-require 'application_system_test_case'
+require_relative 'base_test'
 
-class LikesToPostTest < ApplicationSystemTestCase
-  include Devise::Test::IntegrationHelpers
-
-  setup do
-    sign_in users(:user)
-    @post = posts(:one)
-  end
-
+class Post::LikesTest < Post::BaseTest
   test 'make a like' do
     visit post_url(@post)
 
