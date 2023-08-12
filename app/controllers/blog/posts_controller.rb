@@ -1,5 +1,5 @@
 module Blog
-  class PostsController < ApplicationController
+  class PostsController < BaseController
     def index
       @posts = Post.take_all_by_page(params[:page])
     end

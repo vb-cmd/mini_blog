@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  ActiveAdmin.routes(self)
+
+  devise_for :users, controllers: {
+    # confirmations: 'users/confirmations',
+    passwords: 'users/passwords',
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+    # unlocks: 'users/unlocks',
+    # omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
   scope module: :blog do
     root 'posts#index', as: 'home'
     resources :user_profiles, only: %i[show]
@@ -14,24 +27,4 @@ Rails.application.routes.draw do
       get 'page/:page', action: :index, on: :collection
     end
   end
-
-  namespace :admin do
-    get '/', to: 'dashboards#index'
-    get 'statistics', to: 'dashboards#statistics'
-    resources :comments
-    resources :users do
-      get 'posts', to: 'users#posts'
-      get 'comments', to: 'users#comments'
-    end
-    resources :pages
-
-    resources :categories do
-      get 'posts', to: 'categories#posts'
-    end
-    resources :posts do
-      get 'comments', to: 'posts#comments'
-    end
-  end
-
-  devise_for :users
 end

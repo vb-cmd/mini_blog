@@ -1,17 +1,16 @@
 class User < ApplicationRecord
-  has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
   devise :database_authenticatable, :rememberable, :validatable, :recoverable, :registerable
 
-  enum :role, %i[user moderator admin]
+  class << self
+    def ransackable_attributes(_auth_object = nil)
+      %w[created_at email encrypted_password id likes_count comments_count remember_created_at reset_password_sent_at reset_password_token updated_at]
+    end
 
-  validates :name, presence: true, uniqueness: true
-
-  has_one_attached :avatar
-
-  def self.select_name_and_ids
-    self.select(:id, :name).map { |user| [user.name, user.id] }
+    def ransackable_associations(_auth_object = nil)
+      %w[comments likes]
+    end
   end
 end

@@ -1,7 +1,7 @@
 module Blog
-  class UserProfilesController < ApplicationController
+  class UserProfilesController < BaseController
     def show
-      @profile = User.find_by_name(params[:id])
+      @profile = AdminUser.find_by_name(params[:id])
     end
   end
 end

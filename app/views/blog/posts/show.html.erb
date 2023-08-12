@@ -12,13 +12,13 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><%= t('.category') %> <%= link_to @post.category.title, category_path(@post.category), class: "card-link" %></li>
     <li class="list-group-item"><%= t('.added') %> <%= @post.date_created %></li>
-    <li class="list-group-item"><%= t('.author') %> <%= link_to @post.user.name, user_profile_path(@post.user.name), class: 'card-link' %></li>
+    <li class="list-group-item"><%= t('.author') %> <%= link_to @post.admin_user.name, user_profile_path(@post.admin_user.name), class: 'card-link' %></li>
     <li class="list-group-item"><div id="likes"><%= render 'blog/likes/update' %></div></li>
   </ul>
 </div>
 <!-- send comment -->
 <% if @post.comments_enabled? %>
-  <% if signed_in? %>
+  <% if user_signed_in? %>
     <%= render partial: "blog/comments/form", locals: { url: post_comments_path(@post)} %>
   <% else %>
     <p><%= t('.sign_in_to_comment') %></p>

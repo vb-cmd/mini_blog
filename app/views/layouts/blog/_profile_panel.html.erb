@@ -1,0 +1,14 @@
+<div class="container text-center" style="margin: 10px;">
+  <% if user_signed_in? %>
+    <div class="row">
+      <div class="col">
+        <p>Hello, <%= current_user.email %>!</p>
+        <p><%= link_to 'Edit', edit_user_registration_path, class: "btn btn-success", role: "button" %></p>
+        <p> <%= button_to 'Log out', destroy_user_session_path, class: "btn btn-danger", method: :delete %></p>
+      </div>
+    </div>
+  <% else %>
+    <%= link_to 'Log in', new_user_session_path, class: "btn btn-outline-success" %>
+    <%= link_to 'Registeration', new_user_registration_path, class: "btn btn-outline-success" %>
+  <% end %>
+</div>

@@ -1,46 +1,70 @@
 # frozen_string_literal: true
 
-[User, Category, Post, Comment, Page].each(&:destroy_all)
+require 'faker'
 
-puts 'create a category'
-Category.create!(title: 'Default',
-                 description: 'Here your description',
-                 meta_title: 'Default',
-                 meta_description: 'Description category',
-                 meta_keywords: 'category, meta, keywords')
+puts 'Destroy all records in database'
+[User, AdminUser, Category, Post, Comment, Page, Like].each(&:destroy_all)
 
-puts 'create users'
-%w[admin moderator user].each do |role|
-  User.create!(email: "#{role}@#{role}.com",
-               role:,
-               password: 'password',
-               password_confirmation: 'password',
-               name: role,
-               body: 'Here your content')
+puts 'Create categories'
+10.times do
+  Category.create!(title: Faker::Lorem.sentence,
+                   description: Faker::Lorem.paragraph,
+                   meta_title: Faker::Lorem.sentence[0..50],
+                   meta_description: Faker::Lorem.paragraph[0..200],
+                   meta_keywords: Faker::Lorem.sentence.split.map { |word| word.downcase }.join(','))
 end
 
-puts 'create a post'
-Post.create!(category: Category.all.first,
-             title: 'Hello world!',
-             body: 'Here your content',
-             published: true,
-             description: 'Here your description',
-             comments_enabled: true,
-             meta_title: 'Hello world!',
-             meta_description: 'Description Hello world!',
-             meta_keywords: 'hello, world, description',
-             user: User.all.first)
+puts 'Create users'
+10.times do
+  User.create!(email: Faker::Internet.email,
+               password: 'password',
+               password_confirmation: 'password')
+end
 
-puts 'create a comment'
-Comment.create!(user: User.first,
-                body: 'Here your content for comment',
-                published: true,
-                post: Post.first)
+puts 'Create admin users'
+%w[administrator moderator].each do |role|
+  AdminUser.create!(email: "#{role}@#{role}.com",
+                    password: 'password',
+                    password_confirmation: 'password',
+                    name: role,
+                    body: role)
+end
 
-puts 'create a page'
-Page.create!(title: 'About',
-             body: 'Here your content',
-             published: true,
-             meta_title: 'About',
-             meta_description: 'Description page about',
-             meta_keywords: 'abaout, meta, description')
+puts 'Create posts'
+10.times do
+  Post.create!(category: Category.all.sample,
+               title: Faker::Lorem.sentence,
+               body: Faker::Lorem.paragraph,
+               published: Faker::Boolean.boolean,
+               description: Faker::Lorem.paragraph,
+               comments_enabled: Faker::Boolean.boolean,
+               meta_title: Faker::Lorem.sentence[0..50],
+               meta_description: Faker::Lorem.paragraph[0..200],
+               meta_keywords: Faker::Lorem.sentence.split.map { |word| word.downcase }.join(','),
+               admin_user: AdminUser.all.sample)
+end
+
+puts 'Create comments for posts'
+10.times do
+  Comment.create!(user: User.all.sample,
+                  body: Faker::Lorem.paragraph,
+                  published: Faker::Boolean.boolean,
+                  post: Post.all.sample)
+end
+
+puts 'Create pages'
+10.times do
+  Page.create!(title: Faker::Lorem.sentence,
+               body: Faker::Lorem.paragraph,
+               published: Faker::Boolean.boolean,
+               meta_title: Faker::Lorem.sentence[0..50],
+               meta_description: Faker::Lorem.paragraph[0..200],
+               meta_keywords: Faker::Lorem.sentence.split.map { |word| word.downcase }.join(','),
+               admin_user: AdminUser.all.sample)
+end
+
+puts 'Create likes for posts'
+30.times do
+  Like.create!(user: User.all.sample,
+               record: Post.all.sample)
+end

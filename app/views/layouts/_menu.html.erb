@@ -1,6 +1,0 @@
-<div class="list-group">
-  <% Category.all.each do |category| %>
-    <%= link_to category.title, category_path(category), class: "list-group-item list-group-item-action" %>
-  <% end %>
-</div>
-<%= render partial: 'layouts/profile_panel' %>

@@ -1,5 +1,5 @@
 module Blog
-  class CommentsController < ApplicationController
+  class CommentsController < BaseController
     before_action :authenticate_user!
     before_action :render_not_allowed, unless: :can_create_comment?
 

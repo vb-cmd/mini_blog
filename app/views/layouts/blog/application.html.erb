@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= display_meta_tags(site: t('site.name'), reverse: true) %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application' %>
+  </head>
+  <body>
+    <%= render 'layouts/blog/header' %>
+    <div class="container">
+      <p style="color: green"><%= notice %></p>
+      <p style="color: red"><%= alert %></p>
+      <div class="row">
+        <div class="col-sm-8">
+          <!--cards-->
+          <%= yield %>
+        </div>
+        <div class="col-sm-4">
+          <!-- menu -->
+          <%= render 'layouts/blog/menu' %>
+        </div>
+      </div>
+    </div>
+    <%= render 'layouts/blog/footer' %>
+    <%= javascript_include_tag 'application' %>
+  </body>
+</html>

@@ -1,7 +1,0 @@
-class AddInfoToUser < ActiveRecord::Migration[7.0]
-  def change
-    add_column :users, :name, :string, null: false
-    add_column :users, :body, :text
-    add_index :users, :name, unique: true
-  end
-end

@@ -1,5 +1,5 @@
 module Blog
-  class PagesController < ApplicationController
+  class PagesController < BaseController
     def show
       @page = Page.find(params[:id])
     end

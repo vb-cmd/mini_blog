@@ -72,3 +72,7 @@ gem 'pg'
 gem 'meta-tags'
 
 gem 'cancancan'
+
+gem "activeadmin", "~> 3.0"
+
+gem "faker", "~> 3.2"

@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
-  belongs_to :category
-  has_many :comments, dependent: :destroy
-  belongs_to :user
+  belongs_to :category, counter_cache: true
+  belongs_to :admin_user, counter_cache: true
 
+  has_many :comments, dependent: :destroy
   has_many :likes, as: :record
 
   validates :title, presence: true
@@ -21,10 +21,14 @@ class Post < ApplicationRecord
   extend SelectData
 
   class << self
-    def ransackable_attributes(auth_object = nil)
-      ["meta_description", "meta_keywords", "meta_title", "published", "title"]
+    def ransackable_attributes(_auth_object = nil)
+      %w[admin_user_id category_id comments_enabled created_at id likes_count comments_count meta_description meta_keywords meta_title published title updated_at]
     end
-  
+
+    def ransackable_associations(_auth_object = nil)
+      %w[admin_user category comments likes rich_text_body rich_text_description]
+    end
+
     def take_all_by_page(page)
       includes(:category)
         .where(published: true)
