@@ -4,7 +4,7 @@ class Blog::CommentsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    sign_in users(:admin)
+    sign_in users(:user)
     @post = posts(:one)
   end
 

@@ -1,23 +1,17 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
 one:
-  user: admin
+  user: user
   post: one
   body: one comment body
   published: true 
 
 two:
-  user: admin
-  post: one
+  user: user_two
+  post: two
   body: two comment body
   published: true
 
 invisible:
-  user: admin
+  user: user
   post: one
-  body: text test3
+  body: invisible comment body
   published: false

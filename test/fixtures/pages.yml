@@ -5,6 +5,7 @@ one:
   meta_description: One page meta description
   meta_keywords: One, page, keywords, meta
   title: One page title
+  admin_user: administrator
   published: true
 
 two:
@@ -12,6 +13,7 @@ two:
   meta_description: Two page meta description
   meta_keywords: Two, page, keywords, meta
   title: Two page title
+  admin_user: administrator
   published: true
   
 invisible:
@@ -19,4 +21,5 @@ invisible:
   meta_description: Invisible page meta description
   meta_keywords: Invisible, page, keywords, meta
   title: Invisible page title
+  admin_user: administrator
   published: false

@@ -1,7 +1,7 @@
 one:
-  user: admin
+  user: user
   record: posts(:one)
 
 two: 
-  user: admin
+  user: user
   record: posts(:two)

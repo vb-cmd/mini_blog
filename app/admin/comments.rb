@@ -32,7 +32,7 @@ ActiveAdmin.register Comment do
   filter :published
   filter :body
   filter :post
-  filter :user, as: :select, collection: User.all.map { |u| [u.email, u.id] }
+  # filter :user, as: :select, collection: User.all.map { |u| [u.email, u.id] }
   filter :updated_at
   filter :created_at
 

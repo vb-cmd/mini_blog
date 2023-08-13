@@ -6,7 +6,7 @@ one:
   meta_keywords: One, post, keywords, meta
   title: One post title
   category: one
-  user: admin
+  admin_user: administrator
   published: true
   comments_enabled: true
 
@@ -16,7 +16,7 @@ two:
   meta_keywords: Two, post, keywords, meta
   title: Two post title
   category: two
-  user: admin
+  admin_user: administrator
   published: true
   comments_enabled: true
 
@@ -26,7 +26,7 @@ invisible:
   meta_keywords: Invisible, post, keywords, meta
   title: Invisible post title
   category: one
-  user: admin
+  admin_user: administrator
   published: false
   comments_enabled: true
 
@@ -36,6 +36,6 @@ disabled_comments:
   meta_keywords: Disabled, comments, post, keywords, meta
   title: Disabled comments post title
   category: one
-  user: admin
+  admin_user: administrator
   published: true
   comments_enabled: false
