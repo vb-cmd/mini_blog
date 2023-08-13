@@ -63,7 +63,7 @@ ActiveAdmin.register Page do
     f.inputs 'Content' do
       f.semantic_errors
       f.input :title
-      f.input :body, as: :action_text
+      f.input :body
       f.input :published
     end
 

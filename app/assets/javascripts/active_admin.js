@@ -1,3 +1,1 @@
-//= require active_admin/base
-//= require "trix"
-//= require "actiontext"
+//= require 'active_admin/base'

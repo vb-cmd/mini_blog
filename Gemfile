@@ -76,3 +76,5 @@ gem 'cancancan'
 gem "activeadmin", "~> 3.0"
 
 gem "faker", "~> 3.2"
+
+gem "bootstrap", "~> 5.2"
