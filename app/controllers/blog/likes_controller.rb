@@ -9,6 +9,7 @@ module Blog
       else
         @post.like(current_user)
       end
+      
       render partial: 'update', layout: false
     end
 

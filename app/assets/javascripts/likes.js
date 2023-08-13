@@ -8,6 +8,7 @@ function updateLikes(href_patch) {
         response.text().then(text => {
             switch (response.status) {
                 case 200:
+                    console.log(text)
                     likes.innerHTML = text;
                     break;
 

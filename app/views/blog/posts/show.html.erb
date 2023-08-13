@@ -13,7 +13,9 @@
     <li class="list-group-item"><%= t('.category') %> <%= link_to @post.category.title, category_path(@post.category), class: "card-link" %></li>
     <li class="list-group-item"><%= t('.added') %> <%= @post.date_created %></li>
     <li class="list-group-item"><%= t('.author') %> <%= link_to @post.admin_user.name, user_profile_path(@post.admin_user.name), class: 'card-link' %></li>
-    <li class="list-group-item"><div id="likes"><%= render 'blog/likes/update' %></div></li>
+    <li class="list-group-item">
+      <div id="likes"><%= render 'blog/likes/update' %></div>
+    </li>
   </ul>
 </div>
 <!-- send comment -->

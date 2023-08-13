@@ -36,10 +36,13 @@ ActiveAdmin.register Category do
   filter :created_at
 
   form do |f|
-    f.inputs do
+    f.inputs 'Content' do
+      f.semantic_errors
       f.input :title
       f.input :description
-      h2 'Meta data: ', style: 'margin:10px;'
+    end
+    f.inputs 'Meta data' do
+      f.semantic_errors
       f.input :meta_title
       f.input :meta_description
       f.input :meta_keywords

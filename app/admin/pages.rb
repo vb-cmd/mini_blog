@@ -4,7 +4,22 @@ ActiveAdmin.register Page do
                 :meta_keywords,
                 :title,
                 :body,
-                :published
+                :published,
+                :admin_user_id
+
+  batch_action :published do |ids|
+    batch_action_collection.find(ids).each do |page|
+      page.update(published: true)
+    end
+    redirect_to admin_pages_path, notice: 'Page(s) was published'
+  end
+
+  batch_action :not_published do |ids|
+    batch_action_collection.find(ids).each do |page|
+      page.update(published: false)
+    end
+    redirect_to admin_pages_path, notice: 'Page(s) was not published'
+  end
 
   index do
     selectable_column
@@ -40,11 +55,20 @@ ActiveAdmin.register Page do
   filter :updated_at
 
   form do |f|
-    f.inputs do
+    f.inputs 'Attached' do
+      f.semantic_errors
+      f.input :admin_user
+    end
+
+    f.inputs 'Content' do
+      f.semantic_errors
       f.input :title
-      f.input :body
+      f.input :body, as: :action_text
       f.input :published
-      h2 'Meta data: ', style: 'margin:10px;'
+    end
+
+    f.inputs 'Meta data' do
+      f.semantic_errors
       f.input :meta_title
       f.input :meta_description
       f.input :meta_keywords

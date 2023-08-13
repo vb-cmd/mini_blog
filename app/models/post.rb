@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   belongs_to :admin_user, counter_cache: true
 
   has_many :comments, dependent: :destroy
-  has_many :likes, as: :record
+  has_many :likes, as: :record, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true
@@ -11,14 +11,13 @@ class Post < ApplicationRecord
   validates :published, inclusion: { in: [true, false] }
   validates :comments_enabled, inclusion: { in: [true, false] }
 
-  has_rich_text :body
   has_rich_text :description
+  has_rich_text :body
 
   paginates_per 10
 
   include FormatDate
   include Parameter
-  extend SelectData
 
   class << self
     def ransackable_attributes(_auth_object = nil)
@@ -41,6 +40,10 @@ class Post < ApplicationRecord
         .where(published: true)
         .find(id)
     end
+  end
+
+  def take_published_comments
+    comments.where(published: true)
   end
 
   def liked_by?(user)

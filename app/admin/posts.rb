@@ -10,6 +10,34 @@ ActiveAdmin.register Post do
                 :comments_count,
                 :admin_user_id
 
+  batch_action :published do |ids|
+    batch_action_collection.find(ids).each do |post|
+      post.update(published: true)
+    end
+    redirect_to admin_posts_path, notice: 'Post(s) was published'
+  end
+
+  batch_action :not_published do |ids|
+    batch_action_collection.find(ids).each do |post|
+      post.update(published: false)
+    end
+    redirect_to admin_posts_path, notice: 'Post(s) was not published'
+  end
+
+  batch_action :comments_enabled do |ids|
+    batch_action_collection.find(ids).each do |post|
+      post.update(comments_enabled: true)
+    end
+    redirect_to admin_posts_path, notice: 'Comment(s) were enabled'
+  end
+
+  batch_action :comments_disabled do |ids|
+    batch_action_collection.find(ids).each do |post|
+      post.update(comments_enabled: false)
+    end
+    redirect_to admin_posts_path, notice: 'Comment(s) were disabled'
+  end
+
   index do
     selectable_column
     id_column
@@ -60,15 +88,23 @@ ActiveAdmin.register Post do
   filter :updated_at
 
   form do |f|
-    f.inputs do
+    f.inputs 'Attached' do
+      f.semantic_errors
+      f.input :category
+      f.input :admin_user
+    end
+
+    f.inputs 'Content' do
+      f.semantic_errors
       f.input :title
       f.input :body
       f.input :description
       f.input :published
       f.input :comments_enabled
-      f.input :category
-      f.input :admin_user
-      h2 'Meta data: ', style: 'margin:10px;'
+    end
+
+    f.inputs 'Meta data' do
+      f.semantic_errors
       f.input :meta_title
       f.input :meta_description
       f.input :meta_keywords

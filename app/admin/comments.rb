@@ -4,6 +4,20 @@ ActiveAdmin.register Comment do
                 :post_id,
                 :user_id
 
+  batch_action :published do |ids|
+    batch_action_collection.find(ids).each do |comment|
+      comment.update(published: true)
+    end
+    redirect_to admin_comments_path, notice: 'Comment(s) was published'
+  end
+
+  batch_action :not_published do |ids|
+    batch_action_collection.find(ids).each do |comment|
+      comment.update(published: false)
+    end
+    redirect_to admin_comments_path, notice: 'Comment(s) was not published'
+  end
+
   index do
     selectable_column
     id_column
@@ -23,11 +37,16 @@ ActiveAdmin.register Comment do
   filter :created_at
 
   form do |f|
-    f.inputs do
-      f.input :body
-      f.input :published
+    f.inputs 'Attached' do
+      f.semantic_errors
       f.input :post
       f.input :user, collection: User.all.map { |u| [u.email, u.id] }
+    end
+
+    f.inputs 'Content' do
+      f.semantic_errors
+      f.input :body
+      f.input :published
     end
 
     f.actions

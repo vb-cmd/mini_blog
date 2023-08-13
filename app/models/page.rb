@@ -9,7 +9,6 @@ class Page < ApplicationRecord
 
   include FormatDate
   include Parameter
-  extend SelectData
 
   class << self
     def ransackable_attributes(_auth_object = nil)

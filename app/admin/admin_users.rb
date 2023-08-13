@@ -53,6 +53,7 @@ ActiveAdmin.register AdminUser do
 
   form do |f|
     f.inputs do
+      f.semantic_errors
       f.input :email
       f.input :name
       f.input :body
