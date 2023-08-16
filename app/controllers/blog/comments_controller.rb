@@ -15,10 +15,6 @@ module Blog
 
     private
 
-    def render_not_allowed
-      render_without_layout('messages', :forbidden, messages: [t('.not_allowed')])
-    end
-
     def can_create_comment?
       Post.find(params[:post_id]).comments_enabled?
     end
@@ -27,6 +23,10 @@ module Blog
       params.require(:comment)
             .permit(:body)
             .merge(post: Post.find(params[:post_id]), user: current_user)
+    end
+
+    def render_not_allowed
+      render_without_layout('messages', :forbidden, messages: [t('.not_allowed')])
     end
 
     def render_without_layout(partial, status, **locals)

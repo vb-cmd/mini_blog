@@ -21,6 +21,14 @@ ActiveAdmin.register AdminUser do
   end
 
   show do |admin_user|
+    panel 'Avatar' do
+      if admin_user.avatar.attached?
+        image_tag admin_user.avatar
+      else
+        para 'No avatar'
+      end
+    end
+
     panel 'Content' do
       admin_user.body
     end
@@ -57,6 +65,7 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :name
       f.input :body
+      f.input :avatar, as: :file
       f.input :password
       f.input :password_confirmation
     end
