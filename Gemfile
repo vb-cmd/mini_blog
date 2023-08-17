@@ -73,8 +73,10 @@ gem 'meta-tags'
 
 gem 'cancancan'
 
-gem "activeadmin", "~> 3.0"
+gem 'activeadmin'
 
-gem "faker", "~> 3.2"
+gem 'faker'
 
-gem "bootstrap", "~> 5.2"
+gem 'bootstrap'
+
+gem "importmap-rails", "~> 1.2"

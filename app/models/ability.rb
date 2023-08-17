@@ -3,31 +3,35 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user_record)
-    if user_record.nil?
+  def initialize(user)
+    @user = user
+
+    if @user.nil?
       anonymous
-    elsif user_record.admin?
-      admin
-    elsif user_record.moderator?
+    elsif @user.administrator?
+      administrator
+    elsif @user.moderator?
       moderator
-    elsif user_record.user?
-      user
     end
   end
 
   private
 
-  def admin
+  def administrator
     can :manage, :all
   end
 
   def moderator
-    can :manage, :all
-    cannot %i[create edit destroy], User
-  end
-
-  def user
-    cannot :manage, :all
+    can :manage, Post, admin_user_id: @user.id
+    can :manage, Comment
+    can :manage, Like
+    can :read, Category
+    can :manage, Page, admin_user_id: @user.id
+    can :manage, User
+    can :read, ActiveAdmin::Page, name: 'Dashboard'
+    can %i[read], AdminUser, id: @user.id
+    cannot %i[new destroy], User
+    cannot :publish, Comment, namespace_name: 'admin'
   end
 
   def anonymous

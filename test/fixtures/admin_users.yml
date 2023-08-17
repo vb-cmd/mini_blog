@@ -3,9 +3,11 @@ administrator:
   encrypted_password: "password"
   name: "Administrator"
   body: "Administrator body"
+  role: administrator
 
 moderator:
   email: "moderator@moderator.com"
   encrypted_password: "password"
   name: "Moderator"
   body: "Moderator body"
+  role: moderator

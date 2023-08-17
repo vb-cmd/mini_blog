@@ -1,7 +1,9 @@
 user:
   email: "user@user.com"
+  name: "User"
   encrypted_password: "password"
 
 user_two:
   email: "usertwo@usertwo.com"
+  name: "UserTwo"
   encrypted_password: "password"

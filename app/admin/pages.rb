@@ -7,23 +7,18 @@ ActiveAdmin.register Page do
                 :published,
                 :admin_user_id
 
-  batch_action :published do |ids|
-    batch_action_collection.find(ids).each do |page|
-      page.update(published: true)
-    end
+  batch_action :publish do |ids|
+    Page.where(id: ids).update_all(published: true)
     redirect_to admin_pages_path, notice: 'Page(s) was published'
   end
 
-  batch_action :not_published do |ids|
-    batch_action_collection.find(ids).each do |page|
-      page.update(published: false)
-    end
+  batch_action :not_publish do |ids|
+    Page.where(id: ids).update_all(published: false)
     redirect_to admin_pages_path, notice: 'Page(s) was not published'
   end
 
   index do
     selectable_column
-    id_column
     column :title
     column :admin_user
     column :published
@@ -55,6 +50,10 @@ ActiveAdmin.register Page do
   filter :updated_at
 
   form do |f|
+    div do
+      javascript_importmap_tags
+    end
+
     f.inputs 'Attached' do
       f.semantic_errors
       f.input :admin_user
@@ -63,8 +62,14 @@ ActiveAdmin.register Page do
     f.inputs 'Content' do
       f.semantic_errors
       f.input :title
-      f.input :body
       f.input :published
+    end
+
+    f.inputs 'Body' do
+      f.semantic_errors
+      li style: 'margin: 10px' do
+        f.rich_text_area :body
+      end
     end
 
     f.inputs 'Meta data' do

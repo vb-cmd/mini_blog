@@ -5,8 +5,8 @@ ActiveAdmin.register User do
 
   index do
     selectable_column
-    id_column
     column :email
+    column :name
     column :comments_count
     column :likes_count
     column :created_at
@@ -16,6 +16,7 @@ ActiveAdmin.register User do
   show do
     attributes_table do
       row :email
+      row :name
       row :comments_count
       row :likes_count
       row :reset_password_token
@@ -27,6 +28,7 @@ ActiveAdmin.register User do
   end
 
   filter :email
+  filter :name
   filter :comments_count
   filter :likes_count
   filter :created_at
@@ -36,6 +38,7 @@ ActiveAdmin.register User do
     f.inputs do
       f.semantic_errors
       f.input :email
+      f.input :name
       f.input :password
       f.input :password_confirmation
     end

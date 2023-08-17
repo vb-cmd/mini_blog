@@ -15,7 +15,7 @@ class Category < ApplicationRecord
     end
 
     def ransackable_associations(_auth_object = nil)
-      %w[posts rich_text_description]
+      %w[posts description]
     end
   end
 end

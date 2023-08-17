@@ -3,14 +3,13 @@ ActiveAdmin.register Like do
 
   index do
     selectable_column
-    id_column
     column :user
     column :record
     column :created_at
     actions
   end
 
-  filter :user, as: :select, collection: User.all.map { |u| [u.email, u.id] }
+  filter :user, collection: User.all.map { |u| [u.email, u.id] }
   filter :record_type
   filter :created_at
   filter :updated_at

@@ -4,23 +4,18 @@ ActiveAdmin.register Comment do
                 :post_id,
                 :user_id
 
-  batch_action :published do |ids|
-    batch_action_collection.find(ids).each do |comment|
-      comment.update(published: true)
-    end
+  batch_action :publish do |ids|
+    Comment.where(id: ids).update_all(published: true)
     redirect_to admin_comments_path, notice: 'Comment(s) was published'
   end
 
-  batch_action :not_published do |ids|
-    batch_action_collection.find(ids).each do |comment|
-      comment.update(published: false)
-    end
+  batch_action :not_publish do |ids|
+    Comment.where(id: ids).update_all(published: false)
     redirect_to admin_comments_path, notice: 'Comment(s) was not published'
   end
 
   index do
     selectable_column
-    id_column
     column :user
     column :body
     column :post
@@ -32,7 +27,7 @@ ActiveAdmin.register Comment do
   filter :published
   filter :body
   filter :post
-  filter :user, as: :select, collection: User.all.map { |u| [u.email, u.id] }
+  filter :user, collection: User.all.map { |u| [u.email, u.id] }
   filter :updated_at
   filter :created_at
 

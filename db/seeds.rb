@@ -19,7 +19,8 @@ def development
   10.times do
     User.create!(email: Faker::Internet.email,
                  password: 'password',
-                 password_confirmation: 'password')
+                 password_confirmation: 'password',
+                 name: Faker::Name.name)
   end
 
   puts 'Create admin users'
@@ -27,6 +28,7 @@ def development
     AdminUser.create!(email: "#{role}@#{role}.com",
                       password: 'password',
                       password_confirmation: 'password',
+                      role:,
                       name: role,
                       body: role)
   end
@@ -73,29 +75,43 @@ end
 
 def production
   puts 'Create an admin user'
-  AdminUser.create!(email: 'admin@admin.com',
+  admin = 'administrator'
+  AdminUser.create!(email: "#{admin}@#{admin}.com",
                     password: 'password',
                     password_confirmation: 'password',
-                    name: 'admin',
-                    body: 'admin')
+                    name: admin,
+                    body: admin,
+                    role: admin)
 
   puts 'Create a category'
-  Category.create!(title: 'Default',
-                   description: 'Default description',
-                   meta_title: 'Default',
-                   meta_description: 'Default description',
+  default = 'Default'
+  Category.create!(title: default,
+                   description: default + ' description',
+                   meta_title: default,
+                   meta_description: default,
                    meta_keywords: 'default, default description, description')
 
   puts 'Create a post'
+  hello = 'Hello world'
   Post.create!(category: Category.all.sample,
-               title: 'Hello world',
-               body: 'Hello world!',
-               published: true,
-               description: 'Hello world!',
-               comments_enabled: true,
-               meta_title: 'Hello world',
-               meta_description: 'Hello world',
+               title: hello,
+               body: hello,
+               description: hello,
+               meta_title: hello,
+               meta_description: hello,
                meta_keywords: 'hello, hello world, world',
+               published: true,
+               comments_enabled: true,
+               admin_user: AdminUser.all.sample)
+               
+  puts 'Create a page'
+  title = 'Page'
+  Page.create!(title:,
+               body: title,
+               meta_title: title,
+               meta_description: title,
+               meta_keywords: 'page, page keywords, keywords',
+               published: true,
                admin_user: AdminUser.all.sample)
 end
 

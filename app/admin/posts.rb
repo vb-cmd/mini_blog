@@ -3,6 +3,8 @@ ActiveAdmin.register Post do
                 :meta_description,
                 :meta_keywords,
                 :title,
+                :description,
+                :body,
                 :published,
                 :comments_enabled,
                 :category_id,
@@ -10,37 +12,28 @@ ActiveAdmin.register Post do
                 :comments_count,
                 :admin_user_id
 
-  batch_action :published do |ids|
-    batch_action_collection.find(ids).each do |post|
-      post.update(published: true)
-    end
+  batch_action :publish do |ids|
+    Post.where(id: ids).update_all(published: true)
     redirect_to admin_posts_path, notice: 'Post(s) was published'
   end
 
-  batch_action :not_published do |ids|
-    batch_action_collection.find(ids).each do |post|
-      post.update(published: false)
-    end
+  batch_action :not_publish do |ids|
+    Post.where(id: ids).update_all(published: false)
     redirect_to admin_posts_path, notice: 'Post(s) was not published'
   end
 
-  batch_action :comments_enabled do |ids|
-    batch_action_collection.find(ids).each do |post|
-      post.update(comments_enabled: true)
-    end
+  batch_action :comments_enable do |ids|
+    Post.where(id: ids).update_all(comments_enabled: true)
     redirect_to admin_posts_path, notice: 'Comment(s) were enabled'
   end
 
-  batch_action :comments_disabled do |ids|
-    batch_action_collection.find(ids).each do |post|
-      post.update(comments_enabled: false)
-    end
+  batch_action :comments_disable do |ids|
+    Post.where(id: ids).update_all(comments_enabled: false)
     redirect_to admin_posts_path, notice: 'Comment(s) were disabled'
   end
 
   index do
     selectable_column
-    id_column
     column :title
     column :published
     column :comments_enabled
@@ -88,19 +81,35 @@ ActiveAdmin.register Post do
   filter :updated_at
 
   form do |f|
+    div do
+      javascript_importmap_tags
+    end
+
     f.inputs 'Attached' do
       f.semantic_errors
       f.input :category
       f.input :admin_user
     end
 
-    f.inputs 'Content' do
+    f.inputs 'Settings' do
       f.semantic_errors
       f.input :title
-      f.input :body
-      f.input :description
       f.input :published
       f.input :comments_enabled
+    end
+
+    f.inputs 'Description' do
+      f.semantic_errors
+      li style: 'margin: 10px' do
+        f.rich_text_area :description
+      end
+    end
+
+    f.inputs 'Body' do
+      f.semantic_errors
+      li style: 'margin: 10px' do
+        f.rich_text_area :body
+      end
     end
 
     f.inputs 'Meta data' do

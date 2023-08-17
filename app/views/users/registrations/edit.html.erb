@@ -24,6 +24,10 @@
     <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
   </div>
   <div class="mb-3">
+    <%= f.label :name, class: "form-label" %><br />
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="mb-3">
     <%= f.submit "Update", class: "btn btn-primary" %>
   </div>
 <% end %>

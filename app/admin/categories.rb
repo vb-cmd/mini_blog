@@ -2,15 +2,14 @@ ActiveAdmin.register Category do
   permit_params :meta_title,
                 :meta_description,
                 :meta_keywords,
+                :description,
                 :title,
                 :posts_count
 
   index do
     selectable_column
-    id_column
     column :title
     column :posts_count
-    column :updated_at
     column :created_at
     actions
   end
@@ -36,11 +35,21 @@ ActiveAdmin.register Category do
   filter :created_at
 
   form do |f|
+    div do
+      javascript_importmap_tags
+    end
     f.inputs 'Content' do
       f.semantic_errors
       f.input :title
-      f.input :description
     end
+
+    f.inputs 'Body' do
+      f.semantic_errors
+      li style: 'margin: 10px;' do
+        f.rich_text_area :description
+      end
+    end
+
     f.inputs 'Meta data' do
       f.semantic_errors
       f.input :meta_title
