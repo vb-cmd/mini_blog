@@ -1,6 +1,11 @@
+<% set_meta_tags(
+  title: "Sign up",
+  canonical: new_user_registration_url,
+) %>
+
 <h2>Sign up</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "users/shared/error_messages", resource: resource %>
   <div class="mb-3">
     <%= f.label :email, class: "form-label" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email",  class: "form-control" %>
@@ -24,4 +29,4 @@
     <%= f.submit "Sign up", class: "btn btn-primary" %>
   </div>
 <% end %>
-<%= render "devise/shared/links" %>
+<%= render "users/shared/links" %>

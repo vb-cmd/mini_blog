@@ -13,7 +13,12 @@
  *= require_self
  */
 
-@import "bootstrap";
+ 
+ @import "bootstrap";
+ 
+ .bg-body-tertiary {
+      background-color: #fff !important; 
+ }
 
 p img {
     width: 100%;

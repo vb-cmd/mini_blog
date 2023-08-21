@@ -8,7 +8,9 @@ class User < ApplicationRecord
          :rememberable,
          :validatable,
          :recoverable,
-         :registerable
+         :registerable,
+         :omniauthable,
+         omniauth_providers: %i[google_oauth2 facebook]
 
   validates :name, presence: true
 
@@ -19,6 +21,22 @@ class User < ApplicationRecord
 
     def ransackable_associations(_auth_object = nil)
       %w[comments likes]
+    end
+
+    def form_facebook(auth)
+      find_or_create_by(email: auth.info.email) do |user|
+        user.name = auth.info.name
+        user.email = auth.info.email
+        user.password = Devise.friendly_token
+      end
+    end
+
+    def form_google_oauth2(auth)
+      find_or_create_by(email: auth.info.email) do |user|
+        user.name = auth.info.name
+        user.email = auth.info.email
+        user.password = Devise.friendly_token
+      end
     end
   end
 end

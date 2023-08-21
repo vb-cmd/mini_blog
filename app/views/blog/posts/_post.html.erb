@@ -7,6 +7,6 @@
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><%= t('blog.posts.show.category') %> <%= link_to post.category.title, category_path(post.category), class: 'card-link' %></li>
-    <li class="list-group-item"><%= t('blog.posts.show.author') %> <%= link_to post.admin_user.name, user_profile_path(post.admin_user.name), class: 'card-link' %></li>
+    <li class="list-group-item"><%= t('blog.posts.show.author') %> <%= link_to post.admin_user.name, author_path(post.admin_user.name), class: 'card-link' %></li>
   </ul>
 </div>

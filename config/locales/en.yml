@@ -37,7 +37,7 @@ en:
         disbled_comment: 'Commenting is disabled.'
         there_no_comments: 'There is no comments. Leave a comment and be the first.'
       no_posts: There are no posts
-    user_profiles:
+    authors:
       show:
         no_avatar: 'No avatar'
         meta:

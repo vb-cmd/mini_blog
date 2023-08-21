@@ -9,7 +9,7 @@ ActiveAdmin.register Like do
     actions
   end
 
-  filter :user, collection: User.all.map { |u| [u.email, u.id] }
+  filter :user#, collection: User.all.map { |u| [u.email, u.id] }
   filter :record_type
   filter :created_at
   filter :updated_at
@@ -17,7 +17,7 @@ ActiveAdmin.register Like do
   form do |f|
     f.inputs do
       f.semantic_errors
-      f.input :user, collection: User.all.map { |u| [u.email, u.id] }
+      f.input :user#, collection: User.all.map { |u| [u.email, u.id] }
       f.input :record_type, as: :hidden, input_html: { value: 'Post' }
       f.input :record, collection: Post.all.map { |u| [u.title, u.id] }
     end

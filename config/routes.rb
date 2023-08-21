@@ -7,14 +7,14 @@ Rails.application.routes.draw do
     # confirmations: 'users/confirmations',
     passwords: 'users/passwords',
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
     # unlocks: 'users/unlocks',
-    # omniauth_callbacks: 'users/omniauth_callbacks'
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   scope module: :blog do
     root 'posts#index', as: 'home'
-    resources :user_profiles, only: %i[show]
+    resources :authors, only: %i[show]
     get 'sitemap', to: 'sitemap#index', as: 'sitemap', format: :xml
     get 'search', to: 'search#index', as: 'search'
     get 'categories/:id', to: 'categories#show', as: 'category'

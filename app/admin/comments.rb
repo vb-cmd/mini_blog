@@ -27,7 +27,7 @@ ActiveAdmin.register Comment do
   filter :published
   filter :body
   filter :post
-  filter :user, collection: User.all.map { |u| [u.email, u.id] }
+  filter :user#, collection: User.all.map { |u| [u.email, u.id] }
   filter :updated_at
   filter :created_at
 
@@ -35,7 +35,7 @@ ActiveAdmin.register Comment do
     f.inputs 'Attached' do
       f.semantic_errors
       f.input :post
-      f.input :user, collection: User.all.map { |u| [u.email, u.id] }
+      f.input :user#, collection: User.all.map { |u| [u.email, u.id] }
     end
 
     f.inputs 'Content' do
