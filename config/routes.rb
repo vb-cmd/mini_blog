@@ -17,9 +17,11 @@ Rails.application.routes.draw do
     resources :authors, only: %i[show]
     get 'sitemap', to: 'sitemap#index', as: 'sitemap', format: :xml
     get 'search', to: 'search#index', as: 'search'
-    get 'categories/:id', to: 'categories#show', as: 'category'
-    get 'categories/:id/page/:page', to: 'categories#show', as: 'categories_page'
-
+    resources :categories, only: %i[show] do
+      member do
+        get '/page/:page', to: 'categories#show', as: 'page'
+      end
+    end
     resources :pages, only: %i[show]
     resources :posts, only: %i[show index] do
       match :likes, to: 'likes#update', via: %i[patch put]

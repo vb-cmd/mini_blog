@@ -1,7 +1,7 @@
 <header class="container text-center">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <%= link_to t('site.name'), home_path, class: "navbar-brand", style: 'font-family: var(--bs-body-font-family); font-weight: bold;' %>
+      <%= content_tag :div, t('site.name'), class: "navbar-brand", style: 'font-family: var(--bs-body-font-family); font-weight: bold;' %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,17 +10,18 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <%= link_to t('navbar.home'), home_path, class: "nav-link" %>
+            <%= link_to t('site.navbar.home'), home_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to t('navbar.search'), search_path, class: "nav-link" %>
-          </li>
-          <% Page.where(published: true).each do |page| %>
+          <% pages_navbar.each do |page| %>
             <li class="nav-item">
               <%= link_to page.title, page_path(page), class: "nav-link" %>
             </li>
           <% end %>
         </ul>
+        <%= form_with url:search_path, method: 'GET', role: 'search', class: 'd-flex' do |f| %>
+          <%= f.search_field 'query[title_cont]', class: "form-control me-2" %>
+          <%= f.submit t('site.navbar.search'), class: "btn btn-outline-success" %>
+        <% end %>
       </div>
     </div>
   </nav>

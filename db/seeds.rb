@@ -103,7 +103,7 @@ def production
                published: true,
                comments_enabled: true,
                admin_user: AdminUser.all.sample)
-               
+
   puts 'Create a page'
   title = 'Page'
   Page.create!(title:,
