@@ -8,3 +8,15 @@ You must create and add client ID and secret key
 
 #### Facebook
 `ENV['FACEBOOK_APP_ID']` and `ENV['FACEBOOK_APP_SECRET']`
+
+#### PostgreSql: production
+
+database: `<%= ENV['PG_DATABASE'] %>`
+
+username: `<%= ENV['PG_USER'] %> `
+
+password: `<%= ENV['PG_PASSWORD'] %>`
+
+host: `<%= ENV['PG_HOST'] %>`
+
+port: `<%= ENV['PG_PORT'] %>`
